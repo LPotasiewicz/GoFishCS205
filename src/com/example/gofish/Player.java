@@ -1,6 +1,5 @@
 package com.example.gofish;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Player {
@@ -46,6 +45,10 @@ public class Player {
                 }
             }
         }
+    }
+
+    public int getNumberOfSets() {
+        return sets.size() / 4;
     }
 
     private void addCardToSet(Card card) {
