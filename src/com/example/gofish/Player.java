@@ -11,10 +11,6 @@ public class Player {
         Name = name;
     }
 
-    public void addToHand(Card card) {
-        hand.add(card);
-    }
-
     public void handToString() {
         for(Card card : hand) {
             System.out.println(card.toString());
@@ -31,7 +27,7 @@ public class Player {
         }
     }
     //this method should be called each turn
-    private void checkForSet() {
+    public void checkForSet() {
         ArrayList<Card> set = new ArrayList<Card>();
         for(Card card : hand) {
             if(card.sameCardRank(card) == true) {
@@ -47,8 +43,31 @@ public class Player {
         }
     }
 
+    public ArrayList checkForMatches(Card card) {
+        ArrayList<Card> matchedCards = new ArrayList<Card>();
+        int removedCardCount = 0;
+        for(Card handCard : hand) {
+            if(card.getRank() == handCard.getRank()) {
+                matchedCards.add(handCard);
+                removeCardFromHand(handCard);
+                removedCardCount++;
+            }
+        }
+        //add back in cards
+        for(int i = 0; i < removedCardCount; i++) {
+            // this will change to drawing a card from the deck
+            Card newCard = new Card(13, Suit.HEARTS);
+            hand.add(newCard);
+        }
+        return matchedCards;
+    }
+
     public int getNumberOfSets() {
         return sets.size() / 4;
+    }
+
+    private void addToHand(Card card) {
+        hand.add(card);
     }
 
     private void addCardToSet(Card card) {
