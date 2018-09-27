@@ -21,12 +21,30 @@ public class Player {
             System.out.println(card.toString());
         }
     }
-
+    //this method should be called each turn
+    public void checkHandSize() {
+        if(hand.size() < 7) {
+            while(hand.size() < 7) {
+                //this will be changed to drawing from the deck
+                Card newCard = new Card(13, Suit.HEARTS);
+                hand.add(newCard);
+            }
+        }
+    }
+    //this method should be called each turn
     private void checkForSet() {
-//        int[]
+        ArrayList<Card> set = new ArrayList<Card>();
         for(Card card : hand) {
-            int currentRank = card.getRank();
-
+            if(card.sameCardRank(card) == true) {
+                set.add(card);
+            }
+            if(set.size() == 4) {
+                System.out.println("A set has been found of the rank: " + set.get(1).getRank());
+                for(Card cardInSet : set) {
+                    addCardToSet(cardInSet);
+                    removeCardFromHand(cardInSet);
+                }
+            }
         }
     }
 
