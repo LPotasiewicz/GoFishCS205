@@ -2,13 +2,13 @@ package com.example.gofish;
 
 import java.util.ArrayList;
 
-public class Player {
+public class Computer {
     private ArrayList<Card> hand = new ArrayList<Card>();
     private ArrayList<Card> sets = new ArrayList<Card>();
     private String Name;
 
-    public Player() {
-        Name = "user";
+    public Computer() {
+        Name = "opponent";
     }
 
     public void handToString() {
@@ -94,3 +94,5 @@ public class Player {
 
 
 }
+
+

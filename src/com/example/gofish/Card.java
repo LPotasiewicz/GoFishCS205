@@ -50,7 +50,7 @@ public class Card {
             case SPADES:
                 printSuit = "♠";
                 break;
-            case DIMONDS:
+            case DIAMONDS:
                 printSuit = "♢";
                 break;
             case HEARTS:
