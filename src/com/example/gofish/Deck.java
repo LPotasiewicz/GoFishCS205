@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Deck {
     private ArrayList<Card> deck = new ArrayList<>();
-    private Card tempCard = new Card(8,Suit.CLUBS);
+
 
     //constructor for deck
     public Deck() {
@@ -35,13 +35,6 @@ public class Deck {
         Collections.shuffle(deck);
     }
 
-    //need to finish this
-    public Card draw() {
-        tempCard = (deck.get(0));
-        deck.remove(deck.get(0));
-        return tempCard;
 
-
-    }
 }
 

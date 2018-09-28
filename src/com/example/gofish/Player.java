@@ -1,8 +1,10 @@
 package com.example.gofish;
-
 import java.util.ArrayList;
 
 public class Player {
+    //tempCard used for draw() method
+    Card tempCard = new Card(8,Suit.CLUBS);
+
     private ArrayList<Card> hand = new ArrayList<Card>();
     private ArrayList<Card> sets = new ArrayList<Card>();
     private String Name;
@@ -22,7 +24,8 @@ public class Player {
             while(hand.size() < 7) {
                 //this will be changed to drawing from the deck
                 Card newCard = new Card(13, Suit.HEARTS);
-                hand.add(newCard);
+                //this is where you would draw
+                //hand.add(player.draw());
             }
         }
     }
@@ -43,7 +46,7 @@ public class Player {
         }
     }
 
-    public ArrayList checkForMatches(Card card) {
+    public ArrayList checkForMatches(Card card, Player player1) {
         ArrayList<Card> matchedCards = new ArrayList<Card>();
         int removedCardCount = 0;
         for(Card handCard : hand) {
@@ -56,8 +59,9 @@ public class Player {
         //add back in cards
         for(int i = 0; i < removedCardCount; i++) {
             // this will change to drawing a card from the deck
-            Card newCard = new Card(13, Suit.HEARTS);
-            hand.add(newCard);
+
+            /* NEEDS TO TAKE IN A DECK */
+            //hand.add(player1.draw());
         }
         return matchedCards;
     }
@@ -77,4 +81,13 @@ public class Player {
     private void removeCardFromHand(Card card) {
         hand.remove(card);
     }
+
+    public Card draw(ArrayList<Card> deck1) {
+        tempCard = (deck1.get(0));
+        deck1.remove(deck1.get(0));
+        return tempCard;
+
+
+    }
+
 }
