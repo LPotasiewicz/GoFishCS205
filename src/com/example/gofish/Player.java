@@ -19,17 +19,6 @@ public class Player {
         }
     }
     //this method should be called each turn
-    public void checkHandSize() {
-        if(hand.size() < 7) {
-            while(hand.size() < 7) {
-                //this will be changed to drawing from the deck
-                Card newCard = new Card(13, Suit.HEARTS);
-                //this is where you would draw
-                //hand.add(player.draw());
-            }
-        }
-    }
-    //this method should be called each turn
     public void checkForSet() {
         ArrayList<Card> set = new ArrayList<Card>();
         for(Card card : hand) {
@@ -86,8 +75,6 @@ public class Player {
         tempCard = (deck1.get(0));
         deck1.remove(deck1.get(0));
         return tempCard;
-
-
     }
 
 }
