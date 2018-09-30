@@ -1,29 +1,21 @@
 package com.example.gofish;
-
 import java.util.ArrayList;
 
 public class Player {
+    //tempCard used for draw() method
+    Card tempCard = new Card(8,Suit.CLUBS);
+
     private ArrayList<Card> hand = new ArrayList<Card>();
     private ArrayList<Card> sets = new ArrayList<Card>();
     private String Name;
 
-    public Player() {
-        Name = "user";
+    public Player(String name) {
+        Name = name;
     }
 
     public void handToString() {
         for(Card card : hand) {
             System.out.println(card.toString());
-        }
-    }
-    //this method should be called each turn
-    public void checkHandSize() {
-        if(hand.size() < 7) {
-            while(hand.size() < 7) {
-                //this will be changed to drawing from the deck
-                Card newCard = new Card(13, Suit.HEARTS);
-                hand.add(newCard);
-            }
         }
     }
     //this method should be called each turn
@@ -43,7 +35,7 @@ public class Player {
         }
     }
 
-    public ArrayList checkForMatches(Card card) {
+    public ArrayList checkForMatches(Card card, Player player1) {
         ArrayList<Card> matchedCards = new ArrayList<Card>();
         int removedCardCount = 0;
         for(Card handCard : hand) {
@@ -56,24 +48,11 @@ public class Player {
         //add back in cards
         for(int i = 0; i < removedCardCount; i++) {
             // this will change to drawing a card from the deck
-            Card newCard = new Card(13, Suit.HEARTS);
-            hand.add(newCard);
+
+            /* NEEDS TO TAKE IN A DECK */
+            //hand.add(player1.draw());
         }
         return matchedCards;
-    }
-
-    public void drawCard(Deck deck) {
-        Card cardToDraw = deck.getCardsinDeck().get(0);
-        deck.getCardsinDeck().remove(0);
-        addToHand(cardToDraw);
-    }
-
-    public void populateHand(Deck deck) {
-        int count = 0;
-        while (count <= 6) {
-            drawCard(deck);
-            count += 1;
-        }
     }
 
     public int getNumberOfSets() {
@@ -92,5 +71,10 @@ public class Player {
         hand.remove(card);
     }
 
+    public Card draw(ArrayList<Card> deck1) {
+        tempCard = (deck1.get(0));
+        deck1.remove(deck1.get(0));
+        return tempCard;
+    }
 
 }
