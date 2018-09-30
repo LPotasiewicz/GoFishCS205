@@ -9,8 +9,8 @@ public class Player {
     private ArrayList<Card> sets = new ArrayList<Card>();
     private String Name;
 
-    public Player(String name) {
-        Name = name;
+    public Player() {
+
     }
 
     public void handToString() {
@@ -71,10 +71,10 @@ public class Player {
         hand.remove(card);
     }
 
-    public Card draw(ArrayList<Card> deck1) {
-        tempCard = (deck1.get(0));
-        deck1.remove(deck1.get(0));
-        return tempCard;
+    public void drawCard(Deck deck) {
+        Card cardToDraw = deck.getCardsinDeck().get(0);
+        deck.getCardsinDeck().remove(0);
+        addToHand(cardToDraw);
     }
 
 }
