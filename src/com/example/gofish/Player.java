@@ -2,21 +2,20 @@ package com.example.gofish;
 import java.util.ArrayList;
 
 public class Player {
-    //tempCard used for draw() method
-    Card tempCard = new Card(8,Suit.CLUBS);
-
     private ArrayList<Card> hand = new ArrayList<Card>();
     private ArrayList<Card> sets = new ArrayList<Card>();
-    private String Name;
+    private String name;
 
-    public Player(String name) {
-        Name = name;
+    public Player(String n) {
+        name = n;
     }
 
-    public void handToString() {
+    public String handToString() {
+        String returnString = "";
         for(Card card : hand) {
-            System.out.println(card.toString());
+            returnString += (card + "\n");
         }
+        return returnString;
     }
     //this method should be called each turn
     public void checkForSet() {
@@ -34,6 +33,15 @@ public class Player {
             }
         }
     }
+
+    public void populateHand(Deck deck) {
+        int count = 0;
+        while (count <= 6) {
+            drawCard(deck);
+            count += 1;
+        }
+    }
+
 
     public ArrayList checkForMatches(Card card, Player player1) {
         ArrayList<Card> matchedCards = new ArrayList<Card>();
@@ -71,10 +79,18 @@ public class Player {
         hand.remove(card);
     }
 
-    public Card draw(ArrayList<Card> deck1) {
-        tempCard = (deck1.get(0));
-        deck1.remove(deck1.get(0));
-        return tempCard;
+    public String getName(){
+        return name;
+    }
+
+    public Card getCard(int i){
+        return hand.get(i);
+    }
+
+    public void drawCard(Deck deck) {
+        Card cardToDraw = deck.getCardsInDeck().get(0);
+        deck.getCardsInDeck().remove(0);
+        addToHand(cardToDraw);
     }
 
 }

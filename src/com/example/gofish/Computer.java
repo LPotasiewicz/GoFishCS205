@@ -63,8 +63,8 @@ public class Computer {
     }
 
     public void drawCard(Deck deck) {
-        Card cardToDraw = deck.getCardsinDeck().get(0);
-        deck.getCardsinDeck().remove(0);
+        Card cardToDraw = deck.getCardsInDeck().get(0);
+        deck.getCardsInDeck().remove(0);
         addToHand(cardToDraw);
     }
 
