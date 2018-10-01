@@ -101,4 +101,7 @@ public class Player {
         return cardToDraw;
     }
 
+    public ArrayList<Card> getHand() {
+        return hand;
+    }
 }

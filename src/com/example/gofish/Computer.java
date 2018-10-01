@@ -6,9 +6,11 @@ public class Computer {
     private ArrayList<Card> hand = new ArrayList<Card>();
     private ArrayList<Card> sets = new ArrayList<Card>();
     private String Name;
+    private int percentLies;
 
-    public Computer() {
+    public Computer(int pctLies) {
         Name = "opponent";
+        pctLies = percentLies;
     }
 
     public void handToString() {
@@ -90,7 +92,9 @@ public class Computer {
         hand.remove(card);
     }
 
-
+    public ArrayList<Card> getHand() {
+        return hand;
+    }
 }
 
 

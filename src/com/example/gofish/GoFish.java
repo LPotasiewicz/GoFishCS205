@@ -6,7 +6,7 @@ public class GoFish {
     public static void main(String[] args) {
 
         Player player = new Player("Player 1");
-        Computer computer = new Computer();
+        Computer computer = new Computer(0);
 
         Deck deck = new Deck();
         deck.shuffle();
@@ -16,6 +16,7 @@ public class GoFish {
         computer.populateHand(deck);
 
         boolean playerTurn = true;
+
 
         do {
             while (playerTurn) {
@@ -62,7 +63,7 @@ public class GoFish {
                 computer.checkForSet();
                 playerTurn = true;
             }
-        } while (true);
+        } while (player.getHand().size() != 0 && computer.getHand().size() != 0);
 
 
 //        System.out.println(player.handToString());
@@ -97,4 +98,6 @@ public class GoFish {
         System.out.println("Your input was invalid. Please try again:");
         return askUser(question, options, validResponses);
     }
+
+
 }
