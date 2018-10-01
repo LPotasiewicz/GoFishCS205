@@ -30,7 +30,7 @@ public class Deck {
         }
     }
 
-    public ArrayList<Card> getCardsinDeck() {
+    public ArrayList<Card> getCardsInDeck() {
         return cardsInDeck;
     }
 

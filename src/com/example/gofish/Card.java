@@ -27,19 +27,22 @@ public class Card {
         // this switch statement decides what we print for king, queen, jack, and ace
         switch (rank) {
             case 11:
-                printRank = "J";
+                printRank = " J";
                 break;
             case 12:
-                printRank = "Q";
+                printRank = " Q";
                 break;
             case 13:
-                printRank = "K";
+                printRank = " K";
                 break;
             case 1:
-                printRank = "A";
+                printRank = " A";
+                break;
+            case 10:
+                printRank = String.valueOf(rank);
                 break;
             default:
-                printRank = String.valueOf(rank);
+                printRank = " " + String.valueOf(rank);
                 break;
         }
         // this switch statement decides the values of our suits
@@ -64,4 +67,25 @@ public class Card {
         return printRank + printSuit;
     }
 
+    public String getRankString() {
+        String printRank;
+        switch (rank) {
+            case 11:
+                printRank = "J";
+                break;
+            case 12:
+                printRank = "Q";
+                break;
+            case 13:
+                printRank = "K";
+                break;
+            case 1:
+                printRank = "A";
+                break;
+            default:
+                printRank = String.valueOf(rank);
+                break;
+        }
+        return printRank;
+    }
 }

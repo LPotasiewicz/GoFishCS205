@@ -2,38 +2,49 @@ package com.example.gofish;
 import java.util.ArrayList;
 
 public class Player {
-    //tempCard used for draw() method
-    Card tempCard = new Card(8,Suit.CLUBS);
-
     private ArrayList<Card> hand = new ArrayList<Card>();
     private ArrayList<Card> sets = new ArrayList<Card>();
-    private String Name;
+    private String name;
 
-    public Player() {
-
+    public Player(String n) {
+        name = n;
     }
 
-    public void handToString() {
+    public String handToString() {
+        String returnString = "";
         for(Card card : hand) {
-            System.out.println(card.toString());
+            returnString += (card + "\n");
         }
+        return returnString;
     }
     //this method should be called each turn
     public void checkForSet() {
-        ArrayList<Card> set = new ArrayList<Card>();
-        for(Card card : hand) {
-            if(card.sameCardRank(card) == true) {
-                set.add(card);
-            }
-            if(set.size() == 4) {
-                System.out.println("A set has been found of the rank: " + set.get(1).getRank());
-                for(Card cardInSet : set) {
-                    addCardToSet(cardInSet);
-                    removeCardFromHand(cardInSet);
+        ArrayList<Card> set = new ArrayList<>();
+        for(Card baseCard : hand) {
+            set = new ArrayList<>();
+            for(Card compareCard : hand) {
+                if (baseCard.sameCardRank(compareCard)) {
+                    set.add(compareCard);
                 }
             }
         }
+        if (set.size() == 4) {
+            System.out.println("------------------------ " + name + " has a set of rank: " + set.get(1).getRankString());
+            for (Card cardInSet : set) {
+                addCardToSet(cardInSet);
+                removeCardFromHand(cardInSet);
+            }
+        }
     }
+
+    public void populateHand(Deck deck) {
+        int count = 0;
+        while (count <= 6) {
+            drawCard(deck);
+            count += 1;
+        }
+    }
+
 
     public ArrayList checkForMatches(Card card, Player player1) {
         ArrayList<Card> matchedCards = new ArrayList<Card>();
@@ -59,8 +70,12 @@ public class Player {
         return sets.size() / 4;
     }
 
-    private void addToHand(Card card) {
+    public void addToHand(Card card) {
         hand.add(card);
+    }
+
+    public void addToHand(ArrayList<Card> cards) {
+        hand.addAll(cards);
     }
 
     private void addCardToSet(Card card) {
@@ -71,10 +86,19 @@ public class Player {
         hand.remove(card);
     }
 
-    public void drawCard(Deck deck) {
-        Card cardToDraw = deck.getCardsinDeck().get(0);
-        deck.getCardsinDeck().remove(0);
+    public String getName(){
+        return name;
+    }
+
+    public Card getCard(int i){
+        return hand.get(i);
+    }
+
+    public Card drawCard(Deck deck) {
+        Card cardToDraw = deck.getCardsInDeck().get(0);
+        deck.getCardsInDeck().remove(0);
         addToHand(cardToDraw);
+        return cardToDraw;
     }
 
 }
