@@ -10,7 +10,7 @@ public class Computer {
 
     public Computer(int pctLies) {
         Name = "opponent";
-        pctLies = percentLies;
+        percentLies = pctLies;
     }
 
     public void handToString() {

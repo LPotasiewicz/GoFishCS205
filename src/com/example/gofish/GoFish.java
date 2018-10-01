@@ -5,7 +5,11 @@ import java.util.ArrayList;
 public class GoFish {
     public static void main(String[] args) {
 
-        Player player = new Player("Player 1");
+        //ask for a player name
+        System.out.println("Hello! Please enter your name: ");
+        Scanner scan = new Scanner(System.in);
+        String playerName = scan.next();
+        Player player = new Player(playerName);
         Computer computer = new Computer(0);
 
         Deck deck = new Deck();
