@@ -19,17 +19,20 @@ public class Player {
     }
     //this method should be called each turn
     public void checkForSet() {
-        ArrayList<Card> set = new ArrayList<Card>();
-        for(Card card : hand) {
-            if(card.sameCardRank(card) == true) {
-                set.add(card);
-            }
-            if(set.size() == 4) {
-                System.out.println("A set has been found of the rank: " + set.get(1).getRank());
-                for(Card cardInSet : set) {
-                    addCardToSet(cardInSet);
-                    removeCardFromHand(cardInSet);
+        ArrayList<Card> set = new ArrayList<>();
+        for(Card baseCard : hand) {
+            set = new ArrayList<>();
+            for(Card compareCard : hand) {
+                if (baseCard.sameCardRank(compareCard)) {
+                    set.add(compareCard);
                 }
+            }
+        }
+        if (set.size() == 4) {
+            System.out.println("------------------------ " + name + " has a set of rank: " + set.get(1).getRankString());
+            for (Card cardInSet : set) {
+                addCardToSet(cardInSet);
+                removeCardFromHand(cardInSet);
             }
         }
     }
@@ -67,8 +70,12 @@ public class Player {
         return sets.size() / 4;
     }
 
-    private void addToHand(Card card) {
+    public void addToHand(Card card) {
         hand.add(card);
+    }
+
+    public void addToHand(ArrayList<Card> cards) {
+        hand.addAll(cards);
     }
 
     private void addCardToSet(Card card) {
@@ -87,10 +94,11 @@ public class Player {
         return hand.get(i);
     }
 
-    public void drawCard(Deck deck) {
+    public Card drawCard(Deck deck) {
         Card cardToDraw = deck.getCardsInDeck().get(0);
         deck.getCardsInDeck().remove(0);
         addToHand(cardToDraw);
+        return cardToDraw;
     }
 
 }

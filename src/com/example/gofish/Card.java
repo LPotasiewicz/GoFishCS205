@@ -67,4 +67,25 @@ public class Card {
         return printRank + printSuit;
     }
 
+    public String getRankString() {
+        String printRank;
+        switch (rank) {
+            case 11:
+                printRank = "J";
+                break;
+            case 12:
+                printRank = "Q";
+                break;
+            case 13:
+                printRank = "K";
+                break;
+            case 1:
+                printRank = "A";
+                break;
+            default:
+                printRank = String.valueOf(rank);
+                break;
+        }
+        return printRank;
+    }
 }

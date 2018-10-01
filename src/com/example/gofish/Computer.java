@@ -28,44 +28,42 @@ public class Computer {
     }
     //this method should be called each turn
     public void checkForSet() {
-        ArrayList<Card> set = new ArrayList<Card>();
-        for(Card card : hand) {
-            if(card.sameCardRank(card) == true) {
-                set.add(card);
-            }
-            if(set.size() == 4) {
-                System.out.println("A set has been found of the rank: " + set.get(1).getRank());
-                for(Card cardInSet : set) {
-                    addCardToSet(cardInSet);
-                    removeCardFromHand(cardInSet);
+        ArrayList<Card> set = new ArrayList<>();
+        for(Card baseCard : hand) {
+            set = new ArrayList<>();
+            for(Card compareCard : hand) {
+                if (baseCard.sameCardRank(compareCard)) {
+                    set.add(compareCard);
                 }
             }
         }
-    }
-
-    public ArrayList checkForMatches(Card card) {
-        ArrayList<Card> matchedCards = new ArrayList<Card>();
-        int removedCardCount = 0;
-        for(Card handCard : hand) {
-            if(card.getRank() == handCard.getRank()) {
-                matchedCards.add(handCard);
-                removeCardFromHand(handCard);
-                removedCardCount++;
+        if (set.size() == 4) {
+            System.out.println("------------------------ Computer has a set of rank: " + set.get(1).getRankString());
+            for (Card cardInSet : set) {
+                addCardToSet(cardInSet);
+                removeCardFromHand(cardInSet);
             }
         }
-        //add back in cards
-        for(int i = 0; i < removedCardCount; i++) {
-            // this will change to drawing a card from the deck
-            Card newCard = new Card(13, Suit.HEARTS);
-            hand.add(newCard);
+    }
+
+    public ArrayList<Card> checkForMatches(Card card) {
+        ArrayList<Card> matchedCards = new ArrayList<>();
+        for(int i = 0; i < hand.size(); i++) { // this cant be a for each loop because of a ConcurrentModificationException
+            if(card.getRank() == hand.get(i).getRank()) {
+                matchedCards.add(hand.get(i));
+                removeCardFromHand(hand.get(i));
+            }
         }
+        // add back in cards
+        // possibly add a card to the hand if no cards are left?
         return matchedCards;
     }
 
-    public void drawCard(Deck deck) {
+    public Card drawCard(Deck deck) {
         Card cardToDraw = deck.getCardsInDeck().get(0);
         deck.getCardsInDeck().remove(0);
         addToHand(cardToDraw);
+        return cardToDraw;
     }
 
     public void populateHand(Deck deck) {
