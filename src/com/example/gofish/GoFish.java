@@ -171,6 +171,10 @@ public class GoFish {
 
         System.out.println("Game is Over!");
         gameplayOutput.getArrayList().add("Game is Over!");
+        System.out.println("Players number of sets: " + player.getNumberOfSets());
+        gameplayOutput.getArrayList().add("Players number of sets: " + player.getNumberOfSets());
+        System.out.println("Computer number of sets: " + computer.getNumberOfSets());
+        gameplayOutput.getArrayList().add("Computer number of sets: " + computer.getNumberOfSets());
         recordGame(gameplayOutput);
 //        System.out.println(player.handToString());
 //        computer.handToString();
