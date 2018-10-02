@@ -39,6 +39,10 @@ public class Deck {
         Collections.shuffle(cardsInDeck);
     }
 
+    public int getDeckSize() {
+        return cardsInDeck.size();
+    }
+
 
 }
 

@@ -29,7 +29,7 @@ public class Computer {
         }
     }
     //this method should be called each turn
-    public void checkForSet() {
+    public void checkForSet(FileIO file) {
         ArrayList<Card> set = new ArrayList<>();
         for(Card baseCard : hand) {
             set = new ArrayList<>();
@@ -40,6 +40,7 @@ public class Computer {
             }
         }
         if (set.size() == 4) {
+            file.getArrayList().add("------------------------ Computer has a set of rank: " + set.get(1).getRankString());
             System.out.println("------------------------ Computer has a set of rank: " + set.get(1).getRankString());
             for (Card cardInSet : set) {
                 addCardToSet(cardInSet);
@@ -96,6 +97,9 @@ public class Computer {
 
     private void removeCardFromHand(Card card) {
         hand.remove(card);
+    }
+    public int getHandSize() {
+        return hand.size();
     }
 
     public ArrayList<Card> getHand() {
