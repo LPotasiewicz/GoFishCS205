@@ -18,7 +18,7 @@ public class Player {
         return returnString;
     }
     //this method should be called each turn
-    public void checkForSet() {
+    public void checkForSet(FileIO file) {
         ArrayList<Card> set = new ArrayList<>();
         for(Card baseCard : hand) {
             set = new ArrayList<>();
@@ -29,6 +29,7 @@ public class Player {
             }
         }
         if (set.size() == 4) {
+            file.getArrayList().add("------------------------ " + name + " has a set of rank: " + set.get(1).getRankString());
             System.out.println("------------------------ " + name + " has a set of rank: " + set.get(1).getRankString());
             for (Card cardInSet : set) {
                 addCardToSet(cardInSet);

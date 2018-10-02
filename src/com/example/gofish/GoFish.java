@@ -1,4 +1,8 @@
 package com.example.gofish;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,6 +15,8 @@ public class GoFish {
         Scanner scan = new Scanner(System.in);
         String playerName = scan.next();
         Player player = new Player(playerName);
+        //Create file io object for file IO
+        FileIO gameplayOutput = new FileIO();
 
         String[] diffOptions = {
                 "Easy - The computer will randomly guess for cards from your hand.",
@@ -54,6 +60,7 @@ public class GoFish {
 
 
         System.out.println("GO FISH has started!");
+        gameplayOutput.getArrayList().add("GO FISH has started!");
         do {
             while (playerTurn) {
                 // sort hand
@@ -66,34 +73,41 @@ public class GoFish {
                 userChoice--;
                 Card userCardChoice = player.getCard(userChoice);
                 System.out.println(player.getName() + ", You choose " + userCardChoice);
+                gameplayOutput.getArrayList().add(player.getName() + ", You choose " + userCardChoice);
                 // check computers hand
                 ArrayList<Card> stolenCards = computer.checkForMatches(userCardChoice);
                 // print result
                 System.out.println("Computer had " + String.valueOf(stolenCards.size()) + " rank " + userCardChoice.getRankString() + (stolenCards.size() == 1 ? " card." : " cards."));
+                gameplayOutput.getArrayList().add("Computer had " + String.valueOf(stolenCards.size()) + " rank " + userCardChoice.getRankString() + (stolenCards.size() == 1 ? " card." : " cards."));
 
                 // no cards were found
                 if (stolenCards.size() == 0) {
                     System.out.println("GO FISH!");
+                    gameplayOutput.getArrayList().add("GO FISH!");
                     Card drawnCard = player.drawCard(deck);
                     System.out.println("You drew a " + drawnCard);
+                    gameplayOutput.getArrayList().add("You drew a " + drawnCard);
 
                     // card drawn is the card you asked for
                     if (drawnCard.sameCardRank(userCardChoice)) {
                         System.out.println("Your turn again!");
+                        gameplayOutput.getArrayList().add("Your turn again!");
                     } else {
                         playerTurn = false;
                         System.out.println(">> Computer's turn! <<");
+                        gameplayOutput.getArrayList().add(">> Computer's turn! <<");
                     }
                 }
 
                 // cards were found
                 else {
                     System.out.println("Your turn again!");
+                    gameplayOutput.getArrayList().add("Your turn again!");
                     player.addToHand(stolenCards);
                 }
 
                 // check for sets
-                player.checkForSet();
+                player.checkForSet(gameplayOutput);
             }
 
             while (!playerTurn) {
@@ -114,15 +128,18 @@ public class GoFish {
                     );
                 }
                 System.out.println("Computer asked for cards with rank " + computerCardChoice.getRankString());
+                gameplayOutput.getArrayList().add("Computer asked for cards with rank " + computerCardChoice.getRankString());
 
                 // check computers hand
                 ArrayList<Card> stolenCards = player.checkForMatches(computerCardChoice);
                 // print result
                 System.out.println(player.getName() + " had " + String.valueOf(stolenCards.size()) + " rank " + computerCardChoice.getRankString() + (stolenCards.size() == 1 ? " card." : " cards."));
+                gameplayOutput.getArrayList().add(player.getName() + " had " + String.valueOf(stolenCards.size()) + " rank " + computerCardChoice.getRankString() + (stolenCards.size() == 1 ? " card." : " cards."));
 
                 // no cards were found
                 if (stolenCards.size() == 0) {
                     System.out.println("GO FISH!");
+                    gameplayOutput.getArrayList().add("GO FISH!");
                     Card drawnCard = computer.drawCard(deck);
                     // TODO: this is for testing
                     // System.out.println("Computer drew a " + drawnCard);
@@ -130,24 +147,29 @@ public class GoFish {
                     // card drawn is the card you asked for
                     if (drawnCard.sameCardRank(computerCardChoice)) {
                         System.out.println("Computer's turn again!");
+                        gameplayOutput.getArrayList().add("Computer's turn again!");
                     } else {
                         playerTurn = true;
                         System.out.println(">> " + player.getName() + "'s turn! <<");
+                        gameplayOutput.getArrayList().add(">> " + player.getName() + "'s turn! <<");
                     }
                 }
 
                 // cards were found
                 else {
                     System.out.println("Computer's turn again!");
+                    gameplayOutput.getArrayList().add("Computer's turn again!");
                     computer.addToHand(stolenCards);
                 }
 
                 // check for sets
-                computer.checkForSet();
+                computer.checkForSet(gameplayOutput);
             }
+            recordGame(gameplayOutput);
         } while (player.getHand().size() != 0 && computer.getHand().size() != 0);
 
-
+        System.out.println("Game is Over!");
+        gameplayOutput.getArrayList().add("Game is Over!");
 //        System.out.println(player.handToString());
 //        computer.handToString();
 //        System.out.println("");
@@ -179,6 +201,25 @@ public class GoFish {
         }
         System.out.println("Your input was invalid. Please try again:");
         return askUser(question, options, validResponses);
+    }
+
+    public static void recordGame(FileIO gameRecords) {
+        try(FileWriter fw = new FileWriter("gameRecords.txt", true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter out = new PrintWriter(bw))
+        {
+            for(Object line : gameRecords.getArrayList()) {
+                out.println(line);
+            }
+            out.println("------------------------------------------------------------------------------------------");
+//            out.println("the text");
+            //more code
+//            out.println("more text");
+            //more code
+        } catch (IOException e) {
+            //exception handling left as an exercise for the reader
+            System.out.println("There was an error with writing out to the file, we apologize for the error.");
+        }
     }
 
 }
