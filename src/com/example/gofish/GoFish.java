@@ -176,6 +176,13 @@ public class GoFish {
         System.out.println("Computer number of sets: " + computer.getNumberOfSets());
         gameplayOutput.getArrayList().add("Computer number of sets: " + computer.getNumberOfSets());
         recordGame(gameplayOutput);
+        if(player.getNumberOfSets() > computer.getNumberOfSets()) {
+            System.out.println("The winner is: " + player.getName());
+            gameplayOutput.getArrayList().add("The winner is: " + player.getName());
+        } else {
+            System.out.println("The winner is the computer! Better luck next time lad!");
+            gameplayOutput.getArrayList().add("The winner is the computer! Better luck next time lad!");
+        }
 //        System.out.println(player.handToString());
 //        computer.handToString();
 //        System.out.println("");
