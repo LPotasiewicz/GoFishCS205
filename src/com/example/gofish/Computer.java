@@ -50,14 +50,16 @@ public class Computer {
 
     public ArrayList<Card> checkForMatches(Card card) {
         ArrayList<Card> matchedCards = new ArrayList<>();
-        for(int i = 0; i < hand.size(); i++) { // this cant be a for each loop because of a ConcurrentModificationException
-            if(card.getRank() == hand.get(i).getRank()) {
-                matchedCards.add(hand.get(i));
-                removeCardFromHand(hand.get(i));
+        if (Math.random() * 100 > percentLies) {
+            for(int i = 0; i < hand.size(); i++) { // this cant be a for each loop because of a ConcurrentModificationException
+                if(card.getRank() == hand.get(i).getRank()) {
+                    matchedCards.add(hand.get(i));
+                    removeCardFromHand(hand.get(i));
+                }
             }
+            // add back in cards
+            // possibly add a card to the hand if no cards are left?
         }
-        // add back in cards
-        // possibly add a card to the hand if no cards are left?
         return matchedCards;
     }
 
