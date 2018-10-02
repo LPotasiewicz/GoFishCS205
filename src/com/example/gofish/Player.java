@@ -46,23 +46,16 @@ public class Player {
     }
 
 
-    public ArrayList checkForMatches(Card card, Player player1) {
-        ArrayList<Card> matchedCards = new ArrayList<Card>();
-        int removedCardCount = 0;
-        for(Card handCard : hand) {
-            if(card.getRank() == handCard.getRank()) {
-                matchedCards.add(handCard);
-                removeCardFromHand(handCard);
-                removedCardCount++;
+    public ArrayList<Card> checkForMatches(Card card) {
+        ArrayList<Card> matchedCards = new ArrayList<>();
+        for(int i = 0; i < hand.size(); i++) { // this cant be a for each loop because of a ConcurrentModificationException
+            if(card.getRank() == hand.get(i).getRank()) {
+                matchedCards.add(hand.get(i));
+                removeCardFromHand(hand.get(i));
             }
         }
-        //add back in cards
-        for(int i = 0; i < removedCardCount; i++) {
-            // this will change to drawing a card from the deck
-
-            /* NEEDS TO TAKE IN A DECK */
-            //hand.add(player1.draw());
-        }
+        // add back in cards
+        // possibly add a card to the hand if no cards are left?
         return matchedCards;
     }
 

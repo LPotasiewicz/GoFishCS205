@@ -84,6 +84,10 @@ public class Computer {
         hand.add(card);
     }
 
+    public void addToHand(ArrayList<Card> cards) {
+        hand.addAll(cards);
+    }
+
     private void addCardToSet(Card card) {
         sets.add(card);
     }
