@@ -71,6 +71,21 @@ public class Player {
         hand.addAll(cards);
     }
 
+    public void sortHand() {
+        ArrayList<Card> newHand = new ArrayList<>();
+        while (hand.size() > 0) {
+            Card min = hand.get(0);
+            for (int i = 0; i < hand.size(); i ++) {
+               if (min.getRank() > hand.get(i).getRank()) {
+                   min = hand.get(i);
+               }
+            }
+            hand.remove(min);
+            newHand.add(min);
+        }
+        hand = newHand;
+    }
+
     private void addCardToSet(Card card) {
         sets.add(card);
     }

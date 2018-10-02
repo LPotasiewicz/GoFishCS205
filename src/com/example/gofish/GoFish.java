@@ -1,6 +1,7 @@
 package com.example.gofish;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class GoFish {
     public static void main(String[] args) {
@@ -55,6 +56,8 @@ public class GoFish {
         System.out.println("GO FISH has started!");
         do {
             while (playerTurn) {
+                // sort hand
+                player.sortHand();
                 int userChoice = Integer.parseInt(askUserNumbered(
                         player.getName() + ", What card would you like to ask for in your hand?",
                         player.handToString().split("\n")
@@ -101,6 +104,11 @@ public class GoFish {
                 );
                 // if the difficulty is not easy, make an informed decision
                 if (difficulty.equals("e")) {
+
+                    // TODO: make the computer smart.
+                    // TODO: always choose the cards of which you have the least,
+                    // TODO: don't repeat asking
+                    // TODO: remember what the user asks, ask for that thing when you draw it.
                     computerCardChoice = computer.getHand().get(
                             (int)(Math.random()*computer.getHand().size())
                     );
@@ -172,6 +180,5 @@ public class GoFish {
         System.out.println("Your input was invalid. Please try again:");
         return askUser(question, options, validResponses);
     }
-
 
 }

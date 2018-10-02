@@ -3,8 +3,8 @@ package com.example.gofish;
 import java.util.ArrayList;
 
 public class Computer {
-    private ArrayList<Card> hand = new ArrayList<Card>();
-    private ArrayList<Card> sets = new ArrayList<Card>();
+    private ArrayList<Card> hand = new ArrayList<>();
+    private ArrayList<Card> sets = new ArrayList<>();
     private String Name;
     private int percentLies;
 

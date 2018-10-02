@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6d6f0203-fec4-444c-b1ba-8a215e8c707d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/com/example/gofish/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/gofish/Computer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/example/gofish/GoFish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/gofish/GoFish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/example/gofish/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/gofish/Player.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,12 +37,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="5708" />
+          <entry key="java" value="6398" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="5708" />
+          <entry key="JAVA" value="6398" />
         </counts>
       </usages-collector>
     </session>
@@ -90,13 +92,21 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/example/gofish/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="71" selection-end-column="5" />
+            <state relative-caret-position="205">
+              <caret line="76" column="35" lean-forward="true" selection-start-line="76" selection-start-column="35" selection-end-line="76" selection-end-column="35" />
               <folding>
                 <element signature="e#2195#2196#0" expanded="true" />
                 <element signature="e#2229#2230#0" expanded="true" />
-                <element signature="e#2353#2354#0" expanded="true" />
-                <element signature="e#2386#2387#0" expanded="true" />
+                <element signature="e#2496#2497#0" expanded="true" />
+                <element signature="e#2526#2527#0" expanded="true" />
+                <element signature="e#2576#2577#0" expanded="true" />
+                <element signature="e#2609#2610#0" expanded="true" />
+                <element signature="e#2639#2640#0" expanded="true" />
+                <element signature="e#2666#2667#0" expanded="true" />
+                <element signature="e#2699#2700#0" expanded="true" />
+                <element signature="e#2733#2734#0" expanded="true" />
+                <element signature="e#2973#2974#0" expanded="true" />
+                <element signature="e#3000#3001#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -105,8 +115,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/example/gofish/GoFish.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="72" column="51" lean-forward="true" selection-start-line="72" selection-start-column="51" selection-end-line="72" selection-end-column="51" />
+            <state relative-caret-position="430">
+              <caret line="59" column="34" lean-forward="true" selection-start-line="59" selection-start-column="34" selection-end-line="59" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -127,7 +137,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/example/gofish/Computer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
-              <caret line="61" column="9" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
+              <caret line="7" column="24" lean-forward="true" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
               <folding>
                 <element signature="e#2580#2581#0" expanded="true" />
                 <element signature="e#2618#2619#0" expanded="true" />
@@ -182,8 +192,8 @@
         <option value="$PROJECT_DIR$/src/com/example/gofish/Suit.java" />
         <option value="$PROJECT_DIR$/src/com/example/gofish/Deck.java" />
         <option value="$PROJECT_DIR$/src/com/example/gofish/Card.java" />
-        <option value="$PROJECT_DIR$/src/com/example/gofish/Player.java" />
         <option value="$PROJECT_DIR$/src/com/example/gofish/GoFish.java" />
+        <option value="$PROJECT_DIR$/src/com/example/gofish/Player.java" />
         <option value="$PROJECT_DIR$/src/com/example/gofish/Computer.java" />
       </list>
     </option>
@@ -226,7 +236,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538443527544" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538445763026" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
@@ -342,21 +352,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/gofish/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="71" selection-end-column="5" />
+        <state relative-caret-position="205">
+          <caret line="76" column="35" lean-forward="true" selection-start-line="76" selection-start-column="35" selection-end-line="76" selection-end-column="35" />
           <folding>
             <element signature="e#2195#2196#0" expanded="true" />
             <element signature="e#2229#2230#0" expanded="true" />
-            <element signature="e#2353#2354#0" expanded="true" />
-            <element signature="e#2386#2387#0" expanded="true" />
+            <element signature="e#2496#2497#0" expanded="true" />
+            <element signature="e#2526#2527#0" expanded="true" />
+            <element signature="e#2576#2577#0" expanded="true" />
+            <element signature="e#2609#2610#0" expanded="true" />
+            <element signature="e#2639#2640#0" expanded="true" />
+            <element signature="e#2666#2667#0" expanded="true" />
+            <element signature="e#2699#2700#0" expanded="true" />
+            <element signature="e#2733#2734#0" expanded="true" />
+            <element signature="e#2973#2974#0" expanded="true" />
+            <element signature="e#3000#3001#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/gofish/GoFish.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="72" column="51" lean-forward="true" selection-start-line="72" selection-start-column="51" selection-end-line="72" selection-end-column="51" />
+        <state relative-caret-position="430">
+          <caret line="59" column="34" lean-forward="true" selection-start-line="59" selection-start-column="34" selection-end-line="59" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -373,7 +391,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/example/gofish/Computer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="61" column="9" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
+          <caret line="7" column="24" lean-forward="true" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
           <folding>
             <element signature="e#2580#2581#0" expanded="true" />
             <element signature="e#2618#2619#0" expanded="true" />
