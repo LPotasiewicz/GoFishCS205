@@ -98,6 +98,9 @@ public class Computer {
     private void removeCardFromHand(Card card) {
         hand.remove(card);
     }
+    public int getHandSize() {
+        return hand.size();
+    }
 
     public ArrayList<Card> getHand() {
         return hand;

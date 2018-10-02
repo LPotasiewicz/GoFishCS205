@@ -113,4 +113,8 @@ public class Player {
     public ArrayList<Card> getHand() {
         return hand;
     }
+
+    public int getHandSize() {
+        return hand.size();
+    }
 }

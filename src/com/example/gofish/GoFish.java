@@ -83,7 +83,7 @@ public class GoFish {
                 gameplayOutput.getArrayList().add("Computer had " + String.valueOf(stolenCards.size()) + " rank " + userCardChoice.getRankString() + (stolenCards.size() == 1 ? " card." : " cards."));
 
                 // no cards were found
-                if (stolenCards.size() == 0) {
+                if (stolenCards.size() == 0 || player.getHandSize() < 1) {
                     System.out.println("GO FISH!");
                     gameplayOutput.getArrayList().add("GO FISH!");
                     Card drawnCard = player.drawCard(deck);
@@ -139,7 +139,7 @@ public class GoFish {
                 gameplayOutput.getArrayList().add(player.getName() + " had " + String.valueOf(stolenCards.size()) + " rank " + computerCardChoice.getRankString() + (stolenCards.size() == 1 ? " card." : " cards."));
 
                 // no cards were found
-                if (stolenCards.size() == 0) {
+                if (stolenCards.size() == 0 || computer.getHandSize() < 1) {
                     System.out.println("GO FISH!");
                     gameplayOutput.getArrayList().add("GO FISH!");
                     Card drawnCard = computer.drawCard(deck);
