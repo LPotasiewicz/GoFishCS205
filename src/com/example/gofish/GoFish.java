@@ -9,14 +9,16 @@ import java.util.Collections;
 
 public class GoFish {
     public static void main(String[] args) {
-
-        //ask for a player name
-        System.out.println("Hello! Please enter your name: ");
-        Scanner scan = new Scanner(System.in);
-        String playerName = scan.next();
-        Player player = new Player(playerName);
         //Create file io object for file IO
         FileIO gameplayOutput = new FileIO();
+        //ask for a player name
+        System.out.println("Hello! Please enter your name: ");
+        gameplayOutput.getArrayList().add("Hello! Please enter your name: ");
+        Scanner scan = new Scanner(System.in);
+        String playerName = scan.next();
+        //add player name to output
+        gameplayOutput.getArrayList().add(playerName);
+        Player player = new Player(playerName);
 
         String[] diffOptions = {
                 "Easy - The computer will randomly guess for cards from your hand.",
@@ -24,7 +26,7 @@ public class GoFish {
                 "Hard - The computer will make smart decisions, and sometimes lie when you ask it for a card."
         };
         String[] validResponses = {"e", "m", "h"};
-        String difficulty = askUser("What difficulty of GO FISH would you like to play, " + player.getName() + "?", diffOptions, validResponses);
+        String difficulty = askUser("What difficulty of GO FISH would you like to play, " + player.getName() + "?", diffOptions, validResponses, gameplayOutput);
 
         int liePercentage = 0;
         if (difficulty.equals("h")) {
@@ -33,7 +35,7 @@ public class GoFish {
                     "A \"fair\" amount (25%)",
                     "Way too much (50%)"
             };
-            int lieResponse = Integer.parseInt(askUserNumbered("How much should the computer lie?", lieOptions));
+            int lieResponse = Integer.parseInt(askUserNumbered("How much should the computer lie?", lieOptions, gameplayOutput));
             switch(lieResponse) {
                 case 1:
                     liePercentage = 10;
@@ -67,7 +69,7 @@ public class GoFish {
                 player.sortHand();
                 int userChoice = Integer.parseInt(askUserNumbered(
                         player.getName() + ", What card would you like to ask for in your hand?",
-                        player.handToString().split("\n")
+                        player.handToString().split("\n"), gameplayOutput
                 ));
                 // offset the user choice for array indexing
                 userChoice--;
@@ -165,33 +167,35 @@ public class GoFish {
                 // check for sets
                 computer.checkForSet(gameplayOutput);
             }
-            recordGame(gameplayOutput);
         } while (player.getHand().size() != 0 && computer.getHand().size() != 0);
 
         System.out.println("Game is Over!");
         gameplayOutput.getArrayList().add("Game is Over!");
+        recordGame(gameplayOutput);
 //        System.out.println(player.handToString());
 //        computer.handToString();
 //        System.out.println("");
 
     }
 
-    public static String askUserNumbered(String question, String[] options) {
+    public static String askUserNumbered(String question, String[] options, FileIO file) {
         String[] numbers = new String[options.length];
         for (int i = 0; i < options.length; i++) {
             numbers[i] = String.valueOf(i+1);
         }
-        return askUser(question, options, numbers);
+        return askUser(question, options, numbers, file);
     }
 
-    public static String askUser(String question, String[] options, String[] validResponses) {
+    public static String askUser(String question, String[] options, String[] validResponses, FileIO file) {
         if (options.length != validResponses.length) {
             throw new IllegalArgumentException("askUser requires String[] options and String[] validResponses to be of equal length");
         }
         Scanner userIn = new Scanner(System.in);
         System.out.println(question);
+        file.getArrayList().add(question);
         for (int i = 0; i < options.length; i++) {
             System.out.println("(" + validResponses[i] + ") " + options[i]);
+            file.getArrayList().add("(" + validResponses[i] + ") " + options[i]);
         }
         String answer = userIn.nextLine();
         for (String resp : validResponses) {
@@ -200,7 +204,8 @@ public class GoFish {
             }
         }
         System.out.println("Your input was invalid. Please try again:");
-        return askUser(question, options, validResponses);
+        file.getArrayList().add("Your input was invalid. Please try again:");
+        return askUser(question, options, validResponses, file);
     }
 
     public static void recordGame(FileIO gameRecords) {
@@ -208,14 +213,15 @@ public class GoFish {
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter out = new PrintWriter(bw))
         {
+            out.println("------------------------------------------------------------------------------------------");
+            out.println("Beginning of Game");
+            out.println("------------------------------------------------------------------------------------------");
             for(Object line : gameRecords.getArrayList()) {
                 out.println(line);
             }
             out.println("------------------------------------------------------------------------------------------");
-//            out.println("the text");
-            //more code
-//            out.println("more text");
-            //more code
+            out.println("End of Game");
+            out.println("------------------------------------------------------------------------------------------");
         } catch (IOException e) {
             //exception handling left as an exercise for the reader
             System.out.println("There was an error with writing out to the file, we apologize for the error.");
