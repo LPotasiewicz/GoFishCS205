@@ -13,12 +13,11 @@ public class GoFish {
         //Create file io object for file IO
         FileIO gameplayOutput = new FileIO();
         //ask for a player name
-        System.out.println("Hello! Please enter your name: ");
-        gameplayOutput.getArrayList().add("Hello! Please enter your name: ");
+        gameplayOutput.fileOutput("Hello! Please enter your name: ");
         Scanner scan = new Scanner(System.in);
         String playerName = scan.next();
         //add player name to output
-        gameplayOutput.getArrayList().add(playerName);
+        gameplayOutput.fileOutputDontPrint(playerName);
         Player player = new Player(playerName);
 
         String[] diffOptions = {
@@ -62,8 +61,7 @@ public class GoFish {
         boolean playerTurn = true;
 
 
-        System.out.println("GO FISH has started!");
-        gameplayOutput.getArrayList().add("GO FISH has started!");
+        gameplayOutput.fileOutput("GO FISH has started!");
         do {
             while (playerTurn) {
                 // sort hand
@@ -81,42 +79,33 @@ public class GoFish {
                     // offset the user choice for array indexing
                     userChoice--;
                     userCardChoice = player.getCard(userChoice);
-                    System.out.println(player.getName() + ", You choose " + userCardChoice);
-                    gameplayOutput.getArrayList().add(player.getName() + ", You choose " + userCardChoice);
+                    gameplayOutput.fileOutput(player.getName() + ", You choose " + userCardChoice);
                     // check computers hand
                     stolenCards = computer.checkForMatches(userCardChoice);
                     // print result
-                    System.out.println("Computer had " + String.valueOf(stolenCards.size()) + " rank " + userCardChoice.getRankString() + (stolenCards.size() == 1 ? " card." : " cards."));
-                    gameplayOutput.getArrayList().add("Computer had " + String.valueOf(stolenCards.size()) + " rank " + userCardChoice.getRankString() + (stolenCards.size() == 1 ? " card." : " cards."));
+                    gameplayOutput.fileOutput("Computer had " + String.valueOf(stolenCards.size()) + " rank " + userCardChoice.getRankString() + (stolenCards.size() == 1 ? " card." : " cards."));
                 } else {
-                    System.out.println(player.getName() + " has no cards!");
-                    gameplayOutput.getArrayList().add(player.getName() + " has no cards!");
+                    gameplayOutput.fileOutput(player.getName() + " has no cards!");
                 }
                 // no cards were found
                 if (stolenCards.size() == 0) {
-                    System.out.println("GO FISH!");
-                    gameplayOutput.getArrayList().add("GO FISH!");
+                    gameplayOutput.fileOutput("GO FISH!");
 
                     // if the deck is empty, you cant draw, computers turn
                     if (deck.getDeckSize() == 0) {
-                        System.out.println("You cant draw, the deck is empty");
-                        gameplayOutput.getArrayList().add("You cant draw, the deck is empty");
+                        gameplayOutput.fileOutput("You cant draw, the deck is empty");
                         playerTurn = false;
-                        System.out.println(">> Computer's turn! <<");
-                        gameplayOutput.getArrayList().add(">> Computer's turn! <<");
+                        gameplayOutput.fileOutput(">> Computer's turn! <<");
                     } else {
                         Card drawnCard = player.drawCard(deck);
-                        System.out.println("You drew a " + drawnCard);
-                        gameplayOutput.getArrayList().add("You drew a " + drawnCard);
+                        gameplayOutput.fileOutput("You drew a " + drawnCard);
 
                         // card drawn is the card you asked for
                         if (drawnCard.sameCardRank(userCardChoice)) { // TODO: if the computers hand is empty, the default card is A♡. If its drawn, they get to go again, this is an issue.
-                            System.out.println("Your turn again!");
-                            gameplayOutput.getArrayList().add("Your turn again!");
+                            gameplayOutput.fileOutput("Your turn again!");
                         } else {
                             playerTurn = false;
-                            System.out.println(">> Computer's turn! <<");
-                            gameplayOutput.getArrayList().add(">> Computer's turn! <<");
+                            gameplayOutput.fileOutput(">> Computer's turn! <<");
                         }
                     }
 
@@ -124,8 +113,7 @@ public class GoFish {
 
                 // cards were found
                 else {
-                    System.out.println("Your turn again!");
-                    gameplayOutput.getArrayList().add("Your turn again!");
+                    gameplayOutput.fileOutput("Your turn again!");
                     player.addToHand(stolenCards);
                 }
 
@@ -154,50 +142,41 @@ public class GoFish {
                                 (int) (Math.random() * computer.getHand().size())
                         );
                     }
-                    System.out.println("Computer asked for cards with rank " + computerCardChoice.getRankString());
-                    gameplayOutput.getArrayList().add("Computer asked for cards with rank " + computerCardChoice.getRankString());
+                    gameplayOutput.fileOutput("Computer asked for cards with rank " + computerCardChoice.getRankString());
 
                     // check computers hand
                     stolenCards = player.checkForMatches(computerCardChoice);
                     // print result
-                    System.out.println(player.getName() + " had " + String.valueOf(stolenCards.size()) + " rank " + computerCardChoice.getRankString() + (stolenCards.size() == 1 ? " card." : " cards."));
-                    gameplayOutput.getArrayList().add(player.getName() + " had " + String.valueOf(stolenCards.size()) + " rank " + computerCardChoice.getRankString() + (stolenCards.size() == 1 ? " card." : " cards."));
+                    gameplayOutput.fileOutput(player.getName() + " had " + String.valueOf(stolenCards.size()) + " rank " + computerCardChoice.getRankString() + (stolenCards.size() == 1 ? " card." : " cards."));
                 } else {
-                    System.out.println("Computer has no cards!");
-                    gameplayOutput.getArrayList().add("Computer has no cards!");
+                    gameplayOutput.fileOutput("Computer has no cards!");
                 }
 
                 // no cards were found
                 if (stolenCards.size() == 0) {
-                    System.out.println("GO FISH!");
-                    gameplayOutput.getArrayList().add("GO FISH!");
+                    gameplayOutput.fileOutput("GO FISH!");
 
                     // if the deck is empty, you cant draw, players turn
                     if (deck.getDeckSize() == 0) {
-                        System.out.println("Computer cant draw, the deck is empty");
-                        gameplayOutput.getArrayList().add("Computer cant draw, the deck is empty");
+                        gameplayOutput.fileOutput("Computer cant draw, the deck is empty");
                         playerTurn = true;
-                        System.out.println(">> " + player.getName() + "'s turn! <<");
-                        gameplayOutput.getArrayList().add(">> " + player.getName() + "'s turn! <<");
+                        gameplayOutput.fileOutput(">> " + player.getName() + "'s turn! <<");
                     } else {
                         Card drawnCard = computer.drawCard(deck);
 
                         // card drawn is the card you asked for
                         if (drawnCard.sameCardRank(computerCardChoice)) { // TODO: if the computers hand is empty, the default card is A♡. If its drawn, they get to go again, this is an issue.
-                            System.out.println("Computer's turn again!");
-                            gameplayOutput.getArrayList().add("Computer's turn again!");
+                            gameplayOutput.fileOutput("Computer's turn again!");
                         } else {
                             playerTurn = true;
-                            System.out.println(">> " + player.getName() + "'s turn! <<");
-                            gameplayOutput.getArrayList().add(">> " + player.getName() + "'s turn! <<");
+                            gameplayOutput.fileOutput(">> " + player.getName() + "'s turn! <<");
                         }
                     }
                 }
 
                 // cards were found
                 else {
-                    System.out.println("Computer's turn again!");
-                    gameplayOutput.getArrayList().add("Computer's turn again!");
+                    gameplayOutput.fileOutput("Computer's turn again!");
                     computer.addToHand(stolenCards);
                 }
 
@@ -206,24 +185,15 @@ public class GoFish {
             }
         } while (player.getHand().size() != 0 && computer.getHand().size() != 0);
 
-        System.out.println("Game is Over!");
-        gameplayOutput.getArrayList().add("Game is Over!");
-        System.out.println("Players number of sets: " + player.getNumberOfSets());
-        gameplayOutput.getArrayList().add("Players number of sets: " + player.getNumberOfSets());
-        System.out.println("Computer number of sets: " + computer.getNumberOfSets());
-        gameplayOutput.getArrayList().add("Computer number of sets: " + computer.getNumberOfSets());
+        gameplayOutput.fileOutput("Game is Over!");
+        gameplayOutput.fileOutput("Players number of sets: " + player.getNumberOfSets());
+        gameplayOutput.fileOutput("Computer number of sets: " + computer.getNumberOfSets());
         recordGame(gameplayOutput);
         if (player.getNumberOfSets() > computer.getNumberOfSets()) {
-            System.out.println("The winner is: " + player.getName());
-            gameplayOutput.getArrayList().add("The winner is: " + player.getName());
+            gameplayOutput.fileOutput("The winner is: " + player.getName());
         } else {
-            System.out.println("The winner is the computer! Better luck next time pal!");
-            gameplayOutput.getArrayList().add("The winner is the computer! Better luck next time pal!");
+            gameplayOutput.fileOutput("The winner is the computer! Better luck next time pal!");
         }
-//        System.out.println(player.handToString());
-//        computer.handToString();
-//        System.out.println("");
-
     }
 
     public static String askUserNumbered(String question, String[] options, FileIO file) {
@@ -240,10 +210,10 @@ public class GoFish {
         }
         Scanner userIn = new Scanner(System.in);
         System.out.println(question);
-        file.getArrayList().add(question);
+        file.fileOutput(question);
         for (int i = 0; i < options.length; i++) {
             System.out.println("(" + validResponses[i] + ") " + options[i]);
-            file.getArrayList().add("(" + validResponses[i] + ") " + options[i]);
+            file.fileOutput("(" + validResponses[i] + ") " + options[i]);
         }
         String answer = userIn.nextLine();
         for (String resp : validResponses) {
@@ -252,7 +222,7 @@ public class GoFish {
             }
         }
         System.out.println("Your input was invalid. Please try again:");
-        file.getArrayList().add("Your input was invalid. Please try again:");
+        file.fileOutput("Your input was invalid. Please try again:");
         return askUser(question, options, validResponses, file);
     }
 
