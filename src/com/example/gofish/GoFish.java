@@ -68,7 +68,7 @@ public class GoFish {
                 Card userCardChoice = new Card(1, Suit.SPADES);
 
                 // if the computers hand is full, it can not ask for a card
-                if (computer.getHand().size() > 0) {
+                if (player.getHand().size() > 0) {
                     int userChoice = Integer.parseInt(askUserNumbered(
                             player.getName() + ", What card would you like to ask for in your hand?",
                             player.handToString().split("\n"), gameplayOutput
