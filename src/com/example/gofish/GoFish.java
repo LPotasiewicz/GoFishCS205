@@ -1,11 +1,12 @@
 package com.example.gofish;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Array;
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class GoFish {
     public static void main(String[] args) {
@@ -36,7 +37,7 @@ public class GoFish {
                     "Way too much (50%)"
             };
             int lieResponse = Integer.parseInt(askUserNumbered("How much should the computer lie?", lieOptions, gameplayOutput));
-            switch(lieResponse) {
+            switch (lieResponse) {
                 case 1:
                     liePercentage = 10;
                     break;
@@ -67,38 +68,58 @@ public class GoFish {
             while (playerTurn) {
                 // sort hand
                 player.sortHand();
-                int userChoice = Integer.parseInt(askUserNumbered(
-                        player.getName() + ", What card would you like to ask for in your hand?",
-                        player.handToString().split("\n"), gameplayOutput
-                ));
-                // offset the user choice for array indexing
-                userChoice--;
-                Card userCardChoice = player.getCard(userChoice);
-                System.out.println(player.getName() + ", You choose " + userCardChoice);
-                gameplayOutput.getArrayList().add(player.getName() + ", You choose " + userCardChoice);
-                // check computers hand
-                ArrayList<Card> stolenCards = computer.checkForMatches(userCardChoice);
-                // print result
-                System.out.println("Computer had " + String.valueOf(stolenCards.size()) + " rank " + userCardChoice.getRankString() + (stolenCards.size() == 1 ? " card." : " cards."));
-                gameplayOutput.getArrayList().add("Computer had " + String.valueOf(stolenCards.size()) + " rank " + userCardChoice.getRankString() + (stolenCards.size() == 1 ? " card." : " cards."));
 
+                ArrayList<Card> stolenCards = new ArrayList<>();
+                Card userCardChoice = new Card(1, Suit.SPADES);
+
+                // if the computers hand is full, it can not ask for a card
+                if (computer.getHand().size() > 0) {
+                    int userChoice = Integer.parseInt(askUserNumbered(
+                            player.getName() + ", What card would you like to ask for in your hand?",
+                            player.handToString().split("\n"), gameplayOutput
+                    ));
+                    // offset the user choice for array indexing
+                    userChoice--;
+                    userCardChoice = player.getCard(userChoice);
+                    System.out.println(player.getName() + ", You choose " + userCardChoice);
+                    gameplayOutput.getArrayList().add(player.getName() + ", You choose " + userCardChoice);
+                    // check computers hand
+                    stolenCards = computer.checkForMatches(userCardChoice);
+                    // print result
+                    System.out.println("Computer had " + String.valueOf(stolenCards.size()) + " rank " + userCardChoice.getRankString() + (stolenCards.size() == 1 ? " card." : " cards."));
+                    gameplayOutput.getArrayList().add("Computer had " + String.valueOf(stolenCards.size()) + " rank " + userCardChoice.getRankString() + (stolenCards.size() == 1 ? " card." : " cards."));
+                } else {
+                    System.out.println(player.getName() + " has no cards!");
+                    gameplayOutput.getArrayList().add(player.getName() + " has no cards!");
+                }
                 // no cards were found
-                if (stolenCards.size() == 0 || player.getHandSize() < 1 && deck.getDeckSize() > 0) {
+                if (stolenCards.size() == 0) {
                     System.out.println("GO FISH!");
                     gameplayOutput.getArrayList().add("GO FISH!");
-                    Card drawnCard = player.drawCard(deck);
-                    System.out.println("You drew a " + drawnCard);
-                    gameplayOutput.getArrayList().add("You drew a " + drawnCard);
 
-                    // card drawn is the card you asked for
-                    if (drawnCard.sameCardRank(userCardChoice)) {
-                        System.out.println("Your turn again!");
-                        gameplayOutput.getArrayList().add("Your turn again!");
-                    } else {
+                    // if the deck is empty, you cant draw, computers turn
+                    if (deck.getDeckSize() == 0) {
+                        System.out.println("You cant draw, the deck is empty");
+                        gameplayOutput.getArrayList().add("You cant draw, the deck is empty");
                         playerTurn = false;
                         System.out.println(">> Computer's turn! <<");
                         gameplayOutput.getArrayList().add(">> Computer's turn! <<");
+                    } else {
+                        Card drawnCard = player.drawCard(deck);
+                        System.out.println("You drew a " + drawnCard);
+                        gameplayOutput.getArrayList().add("You drew a " + drawnCard);
+
+                        // card drawn is the card you asked for
+                        if (drawnCard.sameCardRank(userCardChoice)) { // TODO: if the computers hand is empty, the default card is A♡. If its drawn, they get to go again, this is an issue.
+                            System.out.println("Your turn again!");
+                            gameplayOutput.getArrayList().add("Your turn again!");
+                        } else {
+                            playerTurn = false;
+                            System.out.println(">> Computer's turn! <<");
+                            gameplayOutput.getArrayList().add(">> Computer's turn! <<");
+                        }
                     }
+
                 }
 
                 // cards were found
@@ -113,47 +134,63 @@ public class GoFish {
             }
 
             while (!playerTurn) {
+                ArrayList<Card> stolenCards = new ArrayList<>();
+                Card computerCardChoice = new Card(1, Suit.SPADES);
 
-                // ask for random card
-                Card computerCardChoice = computer.getHand().get(
-                        (int)(Math.random()*computer.getHand().size())
-                );
-                // if the difficulty is not easy, make an informed decision
-                if (difficulty.equals("e")) {
-
-                    // TODO: make the computer smart.
-                    // TODO: always choose the cards of which you have the least,
-                    // TODO: don't repeat asking
-                    // TODO: remember what the user asks, ask for that thing when you draw it.
+                // if the computers hand is full, it can not ask for a card
+                if (computer.getHand().size() > 0) {
+                    // ask for random card
                     computerCardChoice = computer.getHand().get(
-                            (int)(Math.random()*computer.getHand().size())
+                            (int) (Math.random() * computer.getHand().size())
                     );
-                }
-                System.out.println("Computer asked for cards with rank " + computerCardChoice.getRankString());
-                gameplayOutput.getArrayList().add("Computer asked for cards with rank " + computerCardChoice.getRankString());
+                    // if the difficulty is not easy, make an informed decision
+                    if (difficulty.equals("e")) {
 
-                // check computers hand
-                ArrayList<Card> stolenCards = player.checkForMatches(computerCardChoice);
-                // print result
-                System.out.println(player.getName() + " had " + String.valueOf(stolenCards.size()) + " rank " + computerCardChoice.getRankString() + (stolenCards.size() == 1 ? " card." : " cards."));
-                gameplayOutput.getArrayList().add(player.getName() + " had " + String.valueOf(stolenCards.size()) + " rank " + computerCardChoice.getRankString() + (stolenCards.size() == 1 ? " card." : " cards."));
+                        // TODO: make the computer smart.
+                        // TODO: always choose the cards of which you have the least,
+                        // TODO: don't repeat asking
+                        // TODO: remember what the user asks, ask for that thing when you draw it.
+                        computerCardChoice = computer.getHand().get(
+                                (int) (Math.random() * computer.getHand().size())
+                        );
+                    }
+                    System.out.println("Computer asked for cards with rank " + computerCardChoice.getRankString());
+                    gameplayOutput.getArrayList().add("Computer asked for cards with rank " + computerCardChoice.getRankString());
+
+                    // check computers hand
+                    stolenCards = player.checkForMatches(computerCardChoice);
+                    // print result
+                    System.out.println(player.getName() + " had " + String.valueOf(stolenCards.size()) + " rank " + computerCardChoice.getRankString() + (stolenCards.size() == 1 ? " card." : " cards."));
+                    gameplayOutput.getArrayList().add(player.getName() + " had " + String.valueOf(stolenCards.size()) + " rank " + computerCardChoice.getRankString() + (stolenCards.size() == 1 ? " card." : " cards."));
+                } else {
+                    System.out.println("Computer has no cards!");
+                    gameplayOutput.getArrayList().add("Computer has no cards!");
+                }
 
                 // no cards were found
-                if (stolenCards.size() == 0 || computer.getHandSize() < 1 && deck.getDeckSize() > 0) {
+                if (stolenCards.size() == 0) {
                     System.out.println("GO FISH!");
                     gameplayOutput.getArrayList().add("GO FISH!");
-                    Card drawnCard = computer.drawCard(deck);
-                    // TODO: this is for testing
-                    // System.out.println("Computer drew a " + drawnCard);
 
-                    // card drawn is the card you asked for
-                    if (drawnCard.sameCardRank(computerCardChoice)) {
-                        System.out.println("Computer's turn again!");
-                        gameplayOutput.getArrayList().add("Computer's turn again!");
-                    } else {
+                    // if the deck is empty, you cant draw, players turn
+                    if (deck.getDeckSize() == 0) {
+                        System.out.println("Computer cant draw, the deck is empty");
+                        gameplayOutput.getArrayList().add("Computer cant draw, the deck is empty");
                         playerTurn = true;
                         System.out.println(">> " + player.getName() + "'s turn! <<");
                         gameplayOutput.getArrayList().add(">> " + player.getName() + "'s turn! <<");
+                    } else {
+                        Card drawnCard = computer.drawCard(deck);
+
+                        // card drawn is the card you asked for
+                        if (drawnCard.sameCardRank(computerCardChoice)) { // TODO: if the computers hand is empty, the default card is A♡. If its drawn, they get to go again, this is an issue.
+                            System.out.println("Computer's turn again!");
+                            gameplayOutput.getArrayList().add("Computer's turn again!");
+                        } else {
+                            playerTurn = true;
+                            System.out.println(">> " + player.getName() + "'s turn! <<");
+                            gameplayOutput.getArrayList().add(">> " + player.getName() + "'s turn! <<");
+                        }
                     }
                 }
 
@@ -176,12 +213,12 @@ public class GoFish {
         System.out.println("Computer number of sets: " + computer.getNumberOfSets());
         gameplayOutput.getArrayList().add("Computer number of sets: " + computer.getNumberOfSets());
         recordGame(gameplayOutput);
-        if(player.getNumberOfSets() > computer.getNumberOfSets()) {
+        if (player.getNumberOfSets() > computer.getNumberOfSets()) {
             System.out.println("The winner is: " + player.getName());
             gameplayOutput.getArrayList().add("The winner is: " + player.getName());
         } else {
-            System.out.println("The winner is the computer! Better luck next time lad!");
-            gameplayOutput.getArrayList().add("The winner is the computer! Better luck next time lad!");
+            System.out.println("The winner is the computer! Better luck next time pal!");
+            gameplayOutput.getArrayList().add("The winner is the computer! Better luck next time pal!");
         }
 //        System.out.println(player.handToString());
 //        computer.handToString();
@@ -192,7 +229,7 @@ public class GoFish {
     public static String askUserNumbered(String question, String[] options, FileIO file) {
         String[] numbers = new String[options.length];
         for (int i = 0; i < options.length; i++) {
-            numbers[i] = String.valueOf(i+1);
+            numbers[i] = String.valueOf(i + 1);
         }
         return askUser(question, options, numbers, file);
     }
@@ -210,7 +247,7 @@ public class GoFish {
         }
         String answer = userIn.nextLine();
         for (String resp : validResponses) {
-            if (answer.equals(resp)){
+            if (answer.equals(resp)) {
                 return resp;
             }
         }
@@ -220,14 +257,13 @@ public class GoFish {
     }
 
     public static void recordGame(FileIO gameRecords) {
-        try(FileWriter fw = new FileWriter("gameRecords.txt", true);
-            BufferedWriter bw = new BufferedWriter(fw);
-            PrintWriter out = new PrintWriter(bw))
-        {
+        try (FileWriter fw = new FileWriter("gameRecords.txt", true);
+             BufferedWriter bw = new BufferedWriter(fw);
+             PrintWriter out = new PrintWriter(bw)) {
             out.println("------------------------------------------------------------------------------------------");
             out.println("Beginning of Game");
             out.println("------------------------------------------------------------------------------------------");
-            for(Object line : gameRecords.getArrayList()) {
+            for (Object line : gameRecords.getArrayList()) {
                 out.println(line);
             }
             out.println("------------------------------------------------------------------------------------------");

@@ -1,0 +1,619 @@
+------------------------------------------------------------------------------------------
+Beginning of Game
+------------------------------------------------------------------------------------------
+Hello! Please enter your name: 
+asdf
+What difficulty of GO FISH would you like to play, asdf?
+(e) Easy - The computer will randomly guess for cards from your hand.
+(m) Medium - The computer will make smart decisions on what to ask from your hand.
+(h) Hard - The computer will make smart decisions, and sometimes lie when you ask it for a card.
+How much should the computer lie?
+(1) A little (10%)
+(2) A "fair" amount (25%)
+(3) Way too much (50%)
+Your input was invalid. Please try again:
+How much should the computer lie?
+(1) A little (10%)
+(2) A "fair" amount (25%)
+(3) Way too much (50%)
+GO FISH has started!
+asdf, What card would you like to ask for in your hand?
+(1)  A♢
+(2)  6♡
+(3)  7♢
+(4)  9♠
+(5) 10♢
+(6) 10♡
+(7)  Q♠
+asdf, You choose  A♢
+Computer had 0 rank A cards.
+GO FISH!
+You drew a  3♢
+>> Computer's turn! <<
+Computer asked for cards with rank 7
+asdf had 1 rank 7 card.
+Computer's turn again!
+Computer asked for cards with rank 8
+asdf had 0 rank 8 cards.
+GO FISH!
+>> asdf's turn! <<
+asdf, What card would you like to ask for in your hand?
+(1)  A♢
+(2)  3♢
+(3)  6♡
+(4)  9♠
+(5) 10♢
+(6) 10♡
+(7)  Q♠
+asdf, You choose  3♢
+Computer had 0 rank 3 cards.
+GO FISH!
+You drew a  9♡
+>> Computer's turn! <<
+Computer asked for cards with rank 8
+asdf had 0 rank 8 cards.
+GO FISH!
+>> asdf's turn! <<
+asdf, What card would you like to ask for in your hand?
+(1)  A♢
+(2)  3♢
+(3)  6♡
+(4)  9♠
+(5)  9♡
+(6) 10♢
+(7) 10♡
+(8)  Q♠
+asdf, You choose  6♡
+Computer had 1 rank 6 card.
+Your turn again!
+asdf, What card would you like to ask for in your hand?
+(1)  A♢
+(2)  3♢
+(3)  6♡
+(4)  6♣
+(5)  9♠
+(6)  9♡
+(7) 10♢
+(8) 10♡
+(9)  Q♠
+asdf, You choose  6♣
+Computer had 0 rank 6 cards.
+GO FISH!
+You drew a  5♢
+>> Computer's turn! <<
+Computer asked for cards with rank 8
+asdf had 0 rank 8 cards.
+GO FISH!
+>> asdf's turn! <<
+asdf, What card would you like to ask for in your hand?
+(1)  A♢
+(2)  3♢
+(3)  5♢
+(4)  6♡
+(5)  6♣
+(6)  9♠
+(7)  9♡
+(8) 10♢
+(9) 10♡
+(10)  Q♠
+asdf, You choose  6♣
+Computer had 0 rank 6 cards.
+GO FISH!
+You drew a 10♠
+>> Computer's turn! <<
+Computer asked for cards with rank 7
+asdf had 0 rank 7 cards.
+GO FISH!
+>> asdf's turn! <<
+asdf, What card would you like to ask for in your hand?
+(1)  A♢
+(2)  3♢
+(3)  5♢
+(4)  6♡
+(5)  6♣
+(6)  9♠
+(7)  9♡
+(8) 10♢
+(9) 10♡
+(10) 10♠
+(11)  Q♠
+asdf, You choose  A♢
+Computer had 1 rank A card.
+Your turn again!
+asdf, What card would you like to ask for in your hand?
+(1)  A♢
+(2)  A♠
+(3)  3♢
+(4)  5♢
+(5)  6♡
+(6)  6♣
+(7)  9♠
+(8)  9♡
+(9) 10♢
+(10) 10♡
+(11) 10♠
+(12)  Q♠
+asdf, You choose  A♠
+Computer had 0 rank A cards.
+GO FISH!
+You drew a  Q♣
+>> Computer's turn! <<
+Computer asked for cards with rank 3
+asdf had 1 rank 3 card.
+Computer's turn again!
+Computer asked for cards with rank 4
+asdf had 0 rank 4 cards.
+GO FISH!
+>> asdf's turn! <<
+asdf, What card would you like to ask for in your hand?
+(1)  A♢
+(2)  A♠
+(3)  5♢
+(4)  6♡
+(5)  6♣
+(6)  9♠
+(7)  9♡
+(8) 10♢
+(9) 10♡
+(10) 10♠
+(11)  Q♠
+(12)  Q♣
+asdf, You choose  5♢
+Computer had 0 rank 5 cards.
+GO FISH!
+You drew a  6♠
+>> Computer's turn! <<
+Computer asked for cards with rank 4
+asdf had 0 rank 4 cards.
+GO FISH!
+>> asdf's turn! <<
+asdf, What card would you like to ask for in your hand?
+(1)  A♢
+(2)  A♠
+(3)  5♢
+(4)  6♡
+(5)  6♣
+(6)  6♠
+(7)  9♠
+(8)  9♡
+(9) 10♢
+(10) 10♡
+(11) 10♠
+(12)  Q♠
+(13)  Q♣
+asdf, You choose  6♡
+Computer had 0 rank 6 cards.
+GO FISH!
+You drew a  Q♡
+>> Computer's turn! <<
+Computer asked for cards with rank 3
+asdf had 0 rank 3 cards.
+GO FISH!
+>> asdf's turn! <<
+asdf, What card would you like to ask for in your hand?
+(1)  A♢
+(2)  A♠
+(3)  5♢
+(4)  6♡
+(5)  6♣
+(6)  6♠
+(7)  9♠
+(8)  9♡
+(9) 10♢
+(10) 10♡
+(11) 10♠
+(12)  Q♠
+(13)  Q♣
+(14)  Q♡
+asdf, You choose  6♣
+Computer had 0 rank 6 cards.
+GO FISH!
+You drew a  2♢
+>> Computer's turn! <<
+Computer asked for cards with rank 8
+asdf had 0 rank 8 cards.
+GO FISH!
+>> asdf's turn! <<
+asdf, What card would you like to ask for in your hand?
+(1)  A♢
+(2)  A♠
+(3)  2♢
+(4)  5♢
+(5)  6♡
+(6)  6♣
+(7)  6♠
+(8)  9♠
+(9)  9♡
+(10) 10♢
+(11) 10♡
+(12) 10♠
+(13)  Q♠
+(14)  Q♣
+(15)  Q♡
+asdf, You choose  6♡
+Computer had 0 rank 6 cards.
+GO FISH!
+You drew a  J♡
+>> Computer's turn! <<
+Computer asked for cards with rank 7
+asdf had 0 rank 7 cards.
+GO FISH!
+Computer's turn again!
+------------------------ Computer has a set of rank: 7
+Computer asked for cards with rank 3
+asdf had 0 rank 3 cards.
+GO FISH!
+>> asdf's turn! <<
+asdf, What card would you like to ask for in your hand?
+(1)  A♢
+(2)  A♠
+(3)  2♢
+(4)  5♢
+(5)  6♡
+(6)  6♣
+(7)  6♠
+(8)  9♠
+(9)  9♡
+(10) 10♢
+(11) 10♡
+(12) 10♠
+(13)  J♡
+(14)  Q♠
+(15)  Q♣
+(16)  Q♡
+asdf, You choose  6♣
+Computer had 0 rank 6 cards.
+GO FISH!
+You drew a  3♡
+>> Computer's turn! <<
+Computer asked for cards with rank 8
+asdf had 0 rank 8 cards.
+GO FISH!
+>> asdf's turn! <<
+asdf, What card would you like to ask for in your hand?
+(1)  A♢
+(2)  A♠
+(3)  2♢
+(4)  3♡
+(5)  5♢
+(6)  6♡
+(7)  6♣
+(8)  6♠
+(9)  9♠
+(10)  9♡
+(11) 10♢
+(12) 10♡
+(13) 10♠
+(14)  J♡
+(15)  Q♠
+(16)  Q♣
+(17)  Q♡
+asdf, You choose  6♣
+Computer had 0 rank 6 cards.
+GO FISH!
+You drew a  9♢
+>> Computer's turn! <<
+Computer asked for cards with rank 2
+asdf had 1 rank 2 card.
+Computer's turn again!
+Computer asked for cards with rank 4
+asdf had 0 rank 4 cards.
+GO FISH!
+>> asdf's turn! <<
+asdf, What card would you like to ask for in your hand?
+(1)  A♢
+(2)  A♠
+(3)  3♡
+(4)  5♢
+(5)  6♡
+(6)  6♣
+(7)  6♠
+(8)  9♠
+(9)  9♡
+(10)  9♢
+(11) 10♢
+(12) 10♡
+(13) 10♠
+(14)  J♡
+(15)  Q♠
+(16)  Q♣
+(17)  Q♡
+asdf, You choose  9♠
+Computer had 0 rank 9 cards.
+GO FISH!
+You drew a  J♢
+>> Computer's turn! <<
+Computer asked for cards with rank 3
+asdf had 1 rank 3 card.
+Computer's turn again!
+------------------------ Computer has a set of rank: 3
+Computer asked for cards with rank K
+asdf had 0 rank K cards.
+GO FISH!
+>> asdf's turn! <<
+asdf, What card would you like to ask for in your hand?
+(1)  A♢
+(2)  A♠
+(3)  5♢
+(4)  6♡
+(5)  6♣
+(6)  6♠
+(7)  9♠
+(8)  9♡
+(9)  9♢
+(10) 10♢
+(11) 10♡
+(12) 10♠
+(13)  J♡
+(14)  J♢
+(15)  Q♠
+(16)  Q♣
+(17)  Q♡
+asdf, You choose  A♢
+Computer had 0 rank A cards.
+GO FISH!
+You drew a  8♣
+>> Computer's turn! <<
+Computer asked for cards with rank 8
+asdf had 1 rank 8 card.
+Computer's turn again!
+------------------------ Computer has a set of rank: 8
+Computer asked for cards with rank 4
+asdf had 0 rank 4 cards.
+GO FISH!
+Computer's turn again!
+------------------------ Computer has a set of rank: 4
+Computer asked for cards with rank 2
+asdf had 0 rank 2 cards.
+GO FISH!
+>> asdf's turn! <<
+asdf, What card would you like to ask for in your hand?
+(1)  A♢
+(2)  A♠
+(3)  5♢
+(4)  6♡
+(5)  6♣
+(6)  6♠
+(7)  9♠
+(8)  9♡
+(9)  9♢
+(10) 10♢
+(11) 10♡
+(12) 10♠
+(13)  J♡
+(14)  J♢
+(15)  Q♠
+(16)  Q♣
+(17)  Q♡
+asdf, You choose  5♢
+Computer had 0 rank 5 cards.
+GO FISH!
+You drew a  5♠
+Your turn again!
+asdf, What card would you like to ask for in your hand?
+(1)  A♢
+(2)  A♠
+(3)  5♢
+(4)  5♠
+(5)  6♡
+(6)  6♣
+(7)  6♠
+(8)  9♠
+(9)  9♡
+(10)  9♢
+(11) 10♢
+(12) 10♡
+(13) 10♠
+(14)  J♡
+(15)  J♢
+(16)  Q♠
+(17)  Q♣
+(18)  Q♡
+asdf, You choose  6♡
+Computer had 1 rank 6 card.
+Your turn again!
+------------------------ asdf has a set of rank: 6
+asdf, What card would you like to ask for in your hand?
+(1)  A♢
+(2)  A♠
+(3)  5♢
+(4)  5♠
+(5)  9♠
+(6)  9♡
+(7)  9♢
+(8) 10♢
+(9) 10♡
+(10) 10♠
+(11)  J♡
+(12)  J♢
+(13)  Q♠
+(14)  Q♣
+(15)  Q♡
+asdf, You choose  A♠
+Computer had 0 rank A cards.
+GO FISH!
+You drew a  A♣
+Your turn again!
+asdf, What card would you like to ask for in your hand?
+(1)  A♢
+(2)  A♠
+(3)  A♣
+(4)  5♢
+(5)  5♠
+(6)  9♠
+(7)  9♡
+(8)  9♢
+(9) 10♢
+(10) 10♡
+(11) 10♠
+(12)  J♡
+(13)  J♢
+(14)  Q♠
+(15)  Q♣
+(16)  Q♡
+asdf, You choose  A♣
+Computer had 0 rank A cards.
+GO FISH!
+You drew a  2♠
+>> Computer's turn! <<
+Computer asked for cards with rank K
+asdf had 0 rank K cards.
+GO FISH!
+>> asdf's turn! <<
+asdf, What card would you like to ask for in your hand?
+(1)  A♢
+(2)  A♠
+(3)  A♣
+(4)  2♠
+(5)  5♢
+(6)  5♠
+(7)  9♠
+(8)  9♡
+(9)  9♢
+(10) 10♢
+(11) 10♡
+(12) 10♠
+(13)  J♡
+(14)  J♢
+(15)  Q♠
+(16)  Q♣
+(17)  Q♡
+asdf, You choose  2♠
+Computer had 2 rank 2 cards.
+Your turn again!
+asdf, What card would you like to ask for in your hand?
+(1)  A♢
+(2)  A♠
+(3)  A♣
+(4)  2♠
+(5)  2♣
+(6)  2♢
+(7)  5♢
+(8)  5♠
+(9)  9♠
+(10)  9♡
+(11)  9♢
+(12) 10♢
+(13) 10♡
+(14) 10♠
+(15)  J♡
+(16)  J♢
+(17)  Q♠
+(18)  Q♣
+(19)  Q♡
+asdf, You choose  2♢
+Computer had 1 rank 2 card.
+Your turn again!
+------------------------ asdf has a set of rank: 2
+asdf, What card would you like to ask for in your hand?
+(1)  A♢
+(2)  A♠
+(3)  A♣
+(4)  5♢
+(5)  5♠
+(6)  9♠
+(7)  9♡
+(8)  9♢
+(9) 10♢
+(10) 10♡
+(11) 10♠
+(12)  J♡
+(13)  J♢
+(14)  Q♠
+(15)  Q♣
+(16)  Q♡
+asdf, You choose  J♡
+Computer had 0 rank J cards.
+GO FISH!
+You drew a  J♣
+Your turn again!
+asdf, What card would you like to ask for in your hand?
+(1)  A♢
+(2)  A♠
+(3)  A♣
+(4)  5♢
+(5)  5♠
+(6)  9♠
+(7)  9♡
+(8)  9♢
+(9) 10♢
+(10) 10♡
+(11) 10♠
+(12)  J♡
+(13)  J♢
+(14)  J♣
+(15)  Q♠
+(16)  Q♣
+(17)  Q♡
+asdf, You choose  9♡
+Computer had 0 rank 9 cards.
+GO FISH!
+You drew a  J♠
+>> Computer's turn! <<
+------------------------ asdf has a set of rank: J
+Computer asked for cards with rank 9
+asdf had 2 rank 9 cards.
+Computer's turn again!
+Computer asked for cards with rank 9
+asdf had 1 rank 9 card.
+Computer's turn again!
+------------------------ Computer has a set of rank: 9
+Computer asked for cards with rank Q
+asdf had 2 rank Q cards.
+Computer's turn again!
+Computer asked for cards with rank Q
+asdf had 1 rank Q card.
+Computer's turn again!
+------------------------ Computer has a set of rank: Q
+Computer asked for cards with rank K
+asdf had 0 rank K cards.
+GO FISH!
+>> asdf's turn! <<
+asdf, What card would you like to ask for in your hand?
+(1)  A♢
+(2)  A♠
+(3)  A♣
+(4)  5♢
+(5)  5♠
+(6) 10♢
+(7) 10♡
+(8) 10♠
+asdf, You choose 10♠
+Computer had 0 rank 10 cards.
+GO FISH!
+You drew a  A♡
+>> Computer's turn! <<
+------------------------ asdf has a set of rank: A
+Computer asked for cards with rank 10
+asdf had 2 rank 10 cards.
+Computer's turn again!
+Computer asked for cards with rank K
+asdf had 0 rank K cards.
+GO FISH!
+Computer's turn again!
+------------------------ Computer has a set of rank: K
+Computer asked for cards with rank 10
+asdf had 1 rank 10 card.
+Computer's turn again!
+------------------------ Computer has a set of rank: 10
+Computer asked for cards with rank 5
+asdf had 1 rank 5 card.
+Computer's turn again!
+Computer asked for cards with rank 5
+asdf had 1 rank 5 card.
+Computer's turn again!
+Computer asked for cards with rank 5
+asdf had 0 rank 5 cards.
+GO FISH!
+Computer's turn again!
+------------------------ Computer has a set of rank: 5
+Computer has no cards!
+GO FISH!
+Computer cant draw, the deck is empty
+>> asdf's turn! <<
+Game is Over!
+Players number of sets: 4
+Computer number of sets: 9
+------------------------------------------------------------------------------------------
+End of Game
+------------------------------------------------------------------------------------------

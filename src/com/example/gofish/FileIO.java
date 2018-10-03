@@ -10,7 +10,7 @@ public class FileIO {
         gamePlayStrings.add(string);
     }
 
-    public ArrayList getArrayList() {
+    public ArrayList<String> getArrayList() {
         return this.gamePlayStrings;
     }
 }
