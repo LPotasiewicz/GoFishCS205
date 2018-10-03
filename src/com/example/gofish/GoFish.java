@@ -123,6 +123,7 @@ public class GoFish {
             while (!playerTurn) {
                 ArrayList<Card> stolenCards = new ArrayList<>();
                 Card computerCardChoice = new Card(1, Suit.SPADES);
+                gameplayOutput.fileOutputDontPrint("Computer's hand: " + computer.getHand());
 
                 // if the computers hand is full, it can not ask for a card
                 if (computer.getHand().size() > 0) {
@@ -179,7 +180,7 @@ public class GoFish {
 
         gameplayOutput.fileOutput("Game is Over!");
         gameplayOutput.fileOutput("Your number of sets: " + player.getNumberOfSets());
-        gameplayOutput.fileOutput("Computer number of sets: " + computer.getNumberOfSets());
+        gameplayOutput.fileOutput("Computer's number of sets: " + computer.getNumberOfSets());
         recordGame(gameplayOutput);
         if (player.getNumberOfSets() > computer.getNumberOfSets()) {
             gameplayOutput.fileOutput("The winner is: " + player.getName());
@@ -194,7 +195,7 @@ public class GoFish {
         player.checkForSet(gameplayOutput);
 
         gameplayOutput.fileOutput("Your number of sets: " + player.getNumberOfSets());
-        gameplayOutput.fileOutput("Computer number of sets: " + computer.getNumberOfSets());
+        gameplayOutput.fileOutput("Computer's number of sets: " + computer.getNumberOfSets());
         gameplayOutput.fileOutput("Deck: " + deck.getDeckSize() + " cards left");
     }
 

@@ -49,8 +49,9 @@ public class Player {
     public ArrayList<Card> checkForMatches(Card card) {
         ArrayList<Card> matchedCards = new ArrayList<>();
         for(int i = 0; i < hand.size(); i++) { // this cant be a for each loop because of a ConcurrentModificationException
-            if(card.getRank() == hand.get(i).getRank()) {
+            if(card.sameCardRank(hand.get(i))) {
                 matchedCards.add(hand.get(i));
+                System.out.println(hand.get(i));
                 removeCardFromHand(hand.get(i));
             }
         }

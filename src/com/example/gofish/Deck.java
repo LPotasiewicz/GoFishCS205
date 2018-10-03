@@ -8,22 +8,22 @@ public class Deck {
 
     //constructor for deck
     public Deck() {
-        for (int i = 1; i < 14; i++) {
+        for (int i = 1; i < 8; i++) {
             Card card = new Card(i, Suit.HEARTS);
             cardsInDeck.add(card);
             //System.out.println(card.toString());
         }
-        for (int i = 1; i < 14; i++) {
+        for (int i = 1; i < 8; i++) {
             Card card = new Card(i, Suit.DIAMONDS);
             cardsInDeck.add(card);
             //System.out.println(card.toString());
         }
-        for (int i = 1; i < 14; i++) {
+        for (int i = 1; i < 8; i++) {
             Card card = new Card(i, Suit.SPADES);
             cardsInDeck.add(card);
             //System.out.println(card.toString());
         }
-        for (int i = 1; i < 14; i++) {
+        for (int i = 1; i < 8; i++) {
             Card card = new Card(i, Suit.CLUBS);
             cardsInDeck.add(card);
             //System.out.println(card.toString());

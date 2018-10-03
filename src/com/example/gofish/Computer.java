@@ -102,6 +102,7 @@ public class Computer {
             for (int i = 0; i < hand.size(); i++) { // this cant be a for each loop because of a ConcurrentModificationException
                 if (card.getRank() == hand.get(i).getRank()) {
                     matchedCards.add(hand.get(i));
+                    System.out.println(hand.get(i));
                     removeCardFromHand(hand.get(i));
                 }
             }
