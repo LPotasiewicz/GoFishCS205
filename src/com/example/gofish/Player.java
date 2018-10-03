@@ -47,8 +47,6 @@ public class Player {
             }
         }
         hand.removeAll(cardsToRemove);
-        // add back in cards
-        // possibly add a card to the hand if no cards are left?
         return cardsToRemove;
     }
 
