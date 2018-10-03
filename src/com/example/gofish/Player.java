@@ -29,8 +29,7 @@ public class Player {
             }
         }
         if (set.size() == 4) {
-            file.getArrayList().add("------------------------ " + name + " has a set of rank: " + set.get(1).getRankString());
-            System.out.println("------------------------ " + name + " has a set of rank: " + set.get(1).getRankString());
+            file.fileOutput("------------------------ " + name + " has a set of rank: " + set.get(1).getRankString());
             for (Card cardInSet : set) {
                 addCardToSet(cardInSet);
                 removeCardFromHand(cardInSet);

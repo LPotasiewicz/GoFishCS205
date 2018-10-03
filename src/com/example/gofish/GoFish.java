@@ -129,15 +129,8 @@ public class GoFish {
                     // ask for random card
                     computerCardChoice = computer.makeRandomChoice();
                     // if the difficulty is not easy, make an informed decision
-                    if (difficulty.equals("e")) {
-
-                        // TODO: make the computer smart.
-                        // TODO: always choose the cards of which you have the least,
-                        // TODO: don't repeat asking
-                        // TODO: remember what the user asks, ask for that thing when you draw it.
-                        computerCardChoice = computer.getHand().get(
-                                (int) (Math.random() * computer.getHand().size())
-                        );
+                    if (!difficulty.equals("e")) {
+                        computerCardChoice = computer.makeInformedChoice();
                     }
                     gameplayOutput.fileOutput("Computer asked for cards with rank " + computerCardChoice.getRankString());
 
