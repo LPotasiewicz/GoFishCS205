@@ -4,7 +4,6 @@ import java.util.*;
 
 public class Deck {
     private ArrayList<Card> cardsInDeck = new ArrayList<>();
-    private Card tempCard = new Card(8,Suit.CLUBS);
     private int cardsInSuit = 14;
 
     //constructor for deck
