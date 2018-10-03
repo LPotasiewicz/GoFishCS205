@@ -101,7 +101,6 @@ public class Computer {
         if (Math.random() * 100 > percentLies) {
             for (int i = 0; i < hand.size(); i++) { // this cant be a for each loop because of a ConcurrentModificationException
                 if (card.getRank() == hand.get(i).getRank()) {
-                    System.out.println(hand.get(i));
                     cardsToRemove.add(hand.get(i));
                 }
             }

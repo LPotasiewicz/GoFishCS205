@@ -50,7 +50,6 @@ public class Player {
         ArrayList<Card> cardsToRemove = new ArrayList<>();
         for(int i = 0; i < hand.size(); i++) { // this cant be a for each loop because of a ConcurrentModificationException
             if (card.getRank() == hand.get(i).getRank()) {
-                System.out.println(hand.get(i));
                 cardsToRemove.add(hand.get(i));
             }
         }
