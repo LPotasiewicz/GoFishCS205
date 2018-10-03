@@ -14,12 +14,15 @@ public class Computer {
         percentLies = pctLies;
     }
 
+    // decides which card should be asked for, randomly
     public Card makeRandomChoice() {
         return hand.get(
                 (int) (Math.random() * hand.size())
         );
     }
 
+    // decides which card should be asked for, using memory of previous guesses from the user and computer,
+    // and some simple statistics
     public Card makeInformedChoice() {
         // if the player has guessed a card in the past, and you now have this card, ask for it
         for (Card handCard : hand) {
@@ -92,6 +95,8 @@ public class Computer {
         }
     }
 
+    // given a card, checks for matches of that cards rank in the hand, and then removes and returns those cards
+    // note: this method has the chance to lie, and not return the cards it should have, controlled by percentLies
     public ArrayList<Card> checkForMatches(Card card) {
         if (!playerGuesses.contains(card.getRank())) {
             playerGuesses.add(card.getRank());
@@ -110,6 +115,7 @@ public class Computer {
         return cardsToRemove;
     }
 
+    // takes a card from the deck, and adds it to your hand
     public Card drawCard(Deck deck) {
         Card cardToDraw = deck.getCardsInDeck().get(0);
         deck.getCardsInDeck().remove(0);
@@ -117,6 +123,7 @@ public class Computer {
         return cardToDraw;
     }
 
+    // fills the hand with 7 cards
     public void populateHand(Deck deck) {
         int count = 0;
         while (count <= 6) {
