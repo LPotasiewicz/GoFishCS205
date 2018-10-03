@@ -1,9 +1,6 @@
 package com.example.gofish;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.lang.reflect.Array;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -94,8 +91,9 @@ public class GoFish {
                     // if the deck is empty, you cant draw, computers turn
                     if (deck.getDeckSize() == 0) {
                         gameplayOutput.fileOutput("You cant draw, the deck is empty");
+                        turnInfo(gameplayOutput, player, computer, deck);
                         playerTurn = false;
-                        gameplayOutput.fileOutput(">> Computer's turn! <<");
+                        gameplayOutput.fileOutput(">>>>>>>>>>>>>>>> Computer's turn! <<<<<<<<<<<<<<<<");
                     } else {
                         Card drawnCard = player.drawCard(deck);
                         gameplayOutput.fileOutput("You drew a " + drawnCard);
@@ -104,8 +102,9 @@ public class GoFish {
                         if (drawnCard.sameCardRank(userCardChoice) && deck.getDeckSize() > 0) {
                             gameplayOutput.fileOutput("Your turn again!");
                         } else {
+                            turnInfo(gameplayOutput, player, computer, deck);
                             playerTurn = false;
-                            gameplayOutput.fileOutput(">> Computer's turn! <<");
+                            gameplayOutput.fileOutput(">>>>>>>>>>>>>>>> Computer's turn! <<<<<<<<<<<<<<<<");
                         }
                     }
 
@@ -159,8 +158,9 @@ public class GoFish {
                     // if the deck is empty, you cant draw, players turn
                     if (deck.getDeckSize() == 0) {
                         gameplayOutput.fileOutput("Computer cant draw, the deck is empty");
+                        turnInfo(gameplayOutput, player, computer, deck);
                         playerTurn = true;
-                        gameplayOutput.fileOutput(">> " + player.getName() + "'s turn! <<");
+                        gameplayOutput.fileOutput(">>>>>>>>>>>>>>>> " + player.getName() + "'s turn! <<<<<<<<<<<<<<<<");
                     } else {
                         Card drawnCard = computer.drawCard(deck);
 
@@ -168,8 +168,9 @@ public class GoFish {
                         if (drawnCard.sameCardRank(computerCardChoice) && deck.getDeckSize() > 0) {
                             gameplayOutput.fileOutput("Computer's turn again!");
                         } else {
+                            turnInfo(gameplayOutput, player, computer, deck);
                             playerTurn = true;
-                            gameplayOutput.fileOutput(">> " + player.getName() + "'s turn! <<");
+                            gameplayOutput.fileOutput(">>>>>>>>>>>>>>>> " + player.getName() + "'s turn! <<<<<<<<<<<<<<<<");
                         }
                     }
                 }
@@ -196,6 +197,16 @@ public class GoFish {
         }
     }
 
+    public static void turnInfo(FileIO gameplayOutput, Player player, Computer computer, Deck deck) {
+        // check for sets
+        computer.checkForSet(gameplayOutput);
+        player.checkForSet(gameplayOutput);
+
+        gameplayOutput.fileOutput("Players number of sets: " + player.getNumberOfSets());
+        gameplayOutput.fileOutput("Computer number of sets: " + computer.getNumberOfSets());
+        gameplayOutput.fileOutput("Deck: " + deck.getDeckSize() + " cards left");
+    }
+
     public static String askUserNumbered(String question, String[] options, FileIO file) {
         String[] numbers = new String[options.length];
         for (int i = 0; i < options.length; i++) {
@@ -209,10 +220,8 @@ public class GoFish {
             throw new IllegalArgumentException("askUser requires String[] options and String[] validResponses to be of equal length");
         }
         Scanner userIn = new Scanner(System.in);
-        System.out.println(question);
         file.fileOutput(question);
         for (int i = 0; i < options.length; i++) {
-            System.out.println("(" + validResponses[i] + ") " + options[i]);
             file.fileOutput("(" + validResponses[i] + ") " + options[i]);
         }
         String answer = userIn.nextLine();
@@ -221,7 +230,6 @@ public class GoFish {
                 return resp;
             }
         }
-        System.out.println("Your input was invalid. Please try again:");
         file.fileOutput("Your input was invalid. Please try again:");
         return askUser(question, options, validResponses, file);
     }
