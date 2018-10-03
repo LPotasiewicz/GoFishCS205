@@ -97,19 +97,19 @@ public class Computer {
         if (!playerGuesses.contains(card.getRank())) {
             playerGuesses.add(card.getRank());
         }
-        ArrayList<Card> matchedCards = new ArrayList<>();
+        ArrayList<Card> cardsToRemove = new ArrayList<>();
         if (Math.random() * 100 > percentLies) {
             for (int i = 0; i < hand.size(); i++) { // this cant be a for each loop because of a ConcurrentModificationException
                 if (card.getRank() == hand.get(i).getRank()) {
-                    matchedCards.add(hand.get(i));
                     System.out.println(hand.get(i));
-                    removeCardFromHand(hand.get(i));
+                    cardsToRemove.add(hand.get(i));
                 }
             }
+            hand.removeAll(cardsToRemove);
             // add back in cards
             // possibly add a card to the hand if no cards are left?
         }
-        return matchedCards;
+        return cardsToRemove;
     }
 
     public Card drawCard(Deck deck) {

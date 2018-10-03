@@ -47,17 +47,17 @@ public class Player {
 
 
     public ArrayList<Card> checkForMatches(Card card) {
-        ArrayList<Card> matchedCards = new ArrayList<>();
+        ArrayList<Card> cardsToRemove = new ArrayList<>();
         for(int i = 0; i < hand.size(); i++) { // this cant be a for each loop because of a ConcurrentModificationException
-            if(card.sameCardRank(hand.get(i))) {
-                matchedCards.add(hand.get(i));
+            if (card.getRank() == hand.get(i).getRank()) {
                 System.out.println(hand.get(i));
-                removeCardFromHand(hand.get(i));
+                cardsToRemove.add(hand.get(i));
             }
         }
+        hand.removeAll(cardsToRemove);
         // add back in cards
         // possibly add a card to the hand if no cards are left?
-        return matchedCards;
+        return cardsToRemove;
     }
 
     public int getNumberOfSets() {
