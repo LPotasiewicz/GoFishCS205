@@ -101,7 +101,7 @@ public class GoFish {
                         gameplayOutput.fileOutput("You drew a " + drawnCard);
 
                         // card drawn is the card you asked for
-                        if (drawnCard.sameCardRank(userCardChoice)) { // TODO: if the computers hand is empty, the default card is A♡. If its drawn, they get to go again, this is an issue.
+                        if (drawnCard.sameCardRank(userCardChoice) && deck.getDeckSize() > 0) {
                             gameplayOutput.fileOutput("Your turn again!");
                         } else {
                             playerTurn = false;
@@ -165,7 +165,7 @@ public class GoFish {
                         Card drawnCard = computer.drawCard(deck);
 
                         // card drawn is the card you asked for
-                        if (drawnCard.sameCardRank(computerCardChoice)) { // TODO: if the computers hand is empty, the default card is A♡. If its drawn, they get to go again, this is an issue.
+                        if (drawnCard.sameCardRank(computerCardChoice) && deck.getDeckSize() > 0) {
                             gameplayOutput.fileOutput("Computer's turn again!");
                         } else {
                             playerTurn = true;
