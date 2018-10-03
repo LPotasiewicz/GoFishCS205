@@ -4,13 +4,6 @@ public class Card {
     private int rank;
     private Suit cardSuit;
 
-    public int getRank() {
-        return rank;
-    }
-
-    public Suit getCardSuit() {
-        return cardSuit;
-    }
 
     public Card(int inputRank, Suit inputCardSuit){
         rank = inputRank;
@@ -65,6 +58,10 @@ public class Card {
         }
 
         return printRank + printSuit;
+    }
+
+    public int getRank() {
+        return rank;
     }
 
     public String getRankString() {

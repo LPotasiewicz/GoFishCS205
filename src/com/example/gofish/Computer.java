@@ -126,9 +126,6 @@ public class Computer {
         }
     }
 
-    public int getNumberOfSets() {
-        return sets.size() / 4;
-    }
 
     private void addToHand(Card card) {
         hand.add(card);
@@ -148,6 +145,10 @@ public class Computer {
 
     public ArrayList<Card> getHand() {
         return hand;
+    }
+
+    public int getNumberOfSets() {
+        return sets.size() / 4;
     }
 }
 

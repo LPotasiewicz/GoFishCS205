@@ -94,14 +94,6 @@ public class Player {
         hand.remove(card);
     }
 
-    public String getName(){
-        return name;
-    }
-
-    public Card getCard(int i){
-        return hand.get(i);
-    }
-
     public Card drawCard(Deck deck) {
         Card cardToDraw = deck.getCardsInDeck().get(0);
         deck.getCardsInDeck().remove(0);
@@ -109,11 +101,15 @@ public class Player {
         return cardToDraw;
     }
 
+    public String getName(){
+        return name;
+    }
+
     public ArrayList<Card> getHand() {
         return hand;
     }
 
-    public int getHandSize() {
-        return hand.size();
+    public Card getCard(int i){
+        return hand.get(i);
     }
 }

@@ -178,7 +178,7 @@ public class GoFish {
         } while (player.getHand().size() != 0 && computer.getHand().size() != 0);
 
         gameplayOutput.fileOutput("Game is Over!");
-        gameplayOutput.fileOutput("Players number of sets: " + player.getNumberOfSets());
+        gameplayOutput.fileOutput("Your number of sets: " + player.getNumberOfSets());
         gameplayOutput.fileOutput("Computer number of sets: " + computer.getNumberOfSets());
         recordGame(gameplayOutput);
         if (player.getNumberOfSets() > computer.getNumberOfSets()) {
@@ -193,7 +193,7 @@ public class GoFish {
         computer.checkForSet(gameplayOutput);
         player.checkForSet(gameplayOutput);
 
-        gameplayOutput.fileOutput("Players number of sets: " + player.getNumberOfSets());
+        gameplayOutput.fileOutput("Your number of sets: " + player.getNumberOfSets());
         gameplayOutput.fileOutput("Computer number of sets: " + computer.getNumberOfSets());
         gameplayOutput.fileOutput("Deck: " + deck.getDeckSize() + " cards left");
     }
