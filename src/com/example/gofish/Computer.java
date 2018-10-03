@@ -5,29 +5,18 @@ import java.util.ArrayList;
 public class Computer {
     private ArrayList<Card> hand = new ArrayList<>();
     private ArrayList<Card> sets = new ArrayList<>();
-    private String Name;
     private int percentLies;
 
     public Computer(int pctLies) {
-        Name = "opponent";
         percentLies = pctLies;
     }
 
-    public void handToString() {
-        for(Card card : hand) {
-            System.out.println(card.toString());
-        }
+    public Card makeRandomChoice() {
+        return hand.get(
+                (int) (Math.random() * hand.size())
+        );
     }
-    //this method should be called each turn
-    public void checkHandSize() {
-        if(hand.size() < 7) {
-            while(hand.size() < 7) {
-                //this will be changed to drawing from the deck
-                Card newCard = new Card(13, Suit.HEARTS);
-                hand.add(newCard);
-            }
-        }
-    }
+
     //this method should be called each turn
     public void checkForSet(FileIO file) {
         ArrayList<Card> set = new ArrayList<>();
@@ -97,9 +86,6 @@ public class Computer {
 
     private void removeCardFromHand(Card card) {
         hand.remove(card);
-    }
-    public int getHandSize() {
-        return hand.size();
     }
 
     public ArrayList<Card> getHand() {

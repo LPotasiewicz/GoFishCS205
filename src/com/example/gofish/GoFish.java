@@ -127,9 +127,7 @@ public class GoFish {
                 // if the computers hand is full, it can not ask for a card
                 if (computer.getHand().size() > 0) {
                     // ask for random card
-                    computerCardChoice = computer.getHand().get(
-                            (int) (Math.random() * computer.getHand().size())
-                    );
+                    computerCardChoice = computer.makeRandomChoice();
                     // if the difficulty is not easy, make an informed decision
                     if (difficulty.equals("e")) {
 
