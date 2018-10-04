@@ -109,7 +109,7 @@ public class GoFish {
                     // if the deck is empty, you cant draw, computers turn
                     if (deck.getDeckSize() == 0) {
                         gamePlayOutput.fileOutput("You cant draw, the deck is empty");
-                        turnInfo(gamePlayOutput, player, computer, deck);
+                        //turnInfo(gamePlayOutput, player, computer, deck);
                         playerTurn = false;
                         gamePlayOutput.fileOutput(">>>>>>>>>>>>>>>> Computer's turn! <<<<<<<<<<<<<<<<");
                     } else {
@@ -120,7 +120,7 @@ public class GoFish {
                         if (drawnCard.sameCardRank(userCardChoice) && deck.getDeckSize() > 0) {
                             gamePlayOutput.fileOutput("Your turn again!");
                         } else {
-                            turnInfo(gamePlayOutput, player, computer, deck);
+                            //turnInfo(gamePlayOutput, player, computer, deck);
                             playerTurn = false;
                             gamePlayOutput.fileOutput(">>>>>>>>>>>>>>>> Computer's turn! <<<<<<<<<<<<<<<<");
                         }
@@ -168,7 +168,7 @@ public class GoFish {
                     // if the deck is empty, you cant draw, players turn
                     if (deck.getDeckSize() == 0) {
                         gamePlayOutput.fileOutput("Computer cant draw, the deck is empty");
-                        turnInfo(gamePlayOutput, player, computer, deck);
+                        //turnInfo(gamePlayOutput, player, computer, deck);
                         playerTurn = true;
                         gamePlayOutput.fileOutput(">>>>>>>>>>>>>>>> " + player.getName() + "'s turn! <<<<<<<<<<<<<<<<");
                     } else {
@@ -176,9 +176,10 @@ public class GoFish {
 
                         // card drawn is the card you asked for
                         if (drawnCard.sameCardRank(computerCardChoice) && deck.getDeckSize() > 0) {
+                            gamePlayOutput.fileOutput("Computer drew a " + drawnCard.getRankString());
                             gamePlayOutput.fileOutput("Computer's turn again!");
                         } else {
-                            turnInfo(gamePlayOutput, player, computer, deck);
+                            //turnInfo(gamePlayOutput, player, computer, deck);
                             playerTurn = true;
                             gamePlayOutput.fileOutput(">>>>>>>>>>>>>>>> " + player.getName() + "'s turn! <<<<<<<<<<<<<<<<");
                         }
