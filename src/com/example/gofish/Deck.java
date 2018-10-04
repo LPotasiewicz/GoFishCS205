@@ -7,7 +7,7 @@ import java.util.*;
 
 public class Deck {
     private ArrayList<Card> cardsInDeck = new ArrayList<>();
-    private int cardsInSuit = 5;
+    private int cardsInSuit = 14;
 
     //constructor for deck
     public Deck() {
