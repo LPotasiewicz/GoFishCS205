@@ -1,3 +1,6 @@
+// ***********************************************************************************************
+// checkForMatches Created by Liam O’Toole, modified by: Luke Potasiewicz and Saraf Ray
+// ***********************************************************************************************
 package com.example.gofish;
 import java.util.ArrayList;
 
@@ -18,6 +21,10 @@ public class Player {
         }
         return returnString;
     }
+
+    // ***********************************************************************************************
+    // checkForSet Created by Saraf Ray, modified by: Luke Potasiewicz
+    // ***********************************************************************************************
     // this method should be called each turn
     public void checkForSet(FileIO file) {
         ArrayList<Card> set = new ArrayList<>();
@@ -38,6 +45,9 @@ public class Player {
         }
     }
 
+    // ***********************************************************************************************
+    // checkForMatches Created by Liam O’Toole, modified by: Luke Potasiewicz and Saraf Ray
+    // ***********************************************************************************************
     // given a card, checks for matches of that cards rank in the hand, and then removes and returns those cards
     public ArrayList<Card> checkForMatches(Card card) {
         ArrayList<Card> cardsToRemove = new ArrayList<>();
@@ -62,6 +72,9 @@ public class Player {
         hand.addAll(cards);
     }
 
+    // ***********************************************************************************************
+    // sortHand Created by Luke Potasiewicz
+    // ***********************************************************************************************
     // modifies the hand to be sorted, this is called before the hand is printed
     public void sortHand() {
         ArrayList<Card> newHand = new ArrayList<>();
@@ -86,6 +99,9 @@ public class Player {
         hand.remove(card);
     }
 
+    // ***********************************************************************************************
+    // drawCard Created by Jae Regan
+    // ***********************************************************************************************
     // takes a card from the deck, and adds it to your hand
     public Card drawCard(Deck deck) {
         Card cardToDraw = deck.getCardsInDeck().get(0);
@@ -93,7 +109,9 @@ public class Player {
         addToHand(cardToDraw);
         return cardToDraw;
     }
-
+    // ***********************************************************************************************
+    // drawCard Created by Luke Potasiewicz
+    // ***********************************************************************************************
     // fills the hand with 7 cards
     public void populateHand(Deck deck) {
         int count = 0;

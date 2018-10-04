@@ -1,3 +1,10 @@
+// ***********************************************************************************************
+// this file was created by Luke Potasiewicz,
+// but had addition or modification at least in part by Liam O’Toole, Saraf Ray, and Jae Regan.
+// ***********************************************************************************************
+// For more accurate information of code ownership, visit: https://github.com/LPotasiewicz/GoFishCS205
+// Where the entire history of all files in this project is held.
+// ***********************************************************************************************
 package com.example.gofish;
 
 import java.io.*;
@@ -6,6 +13,9 @@ import java.util.ArrayList;
 
 public class GoFish {
     public static void main(String[] args) {
+        // ***********************************************************************************************
+        // user interactions created by Liam O’Toole
+        // ***********************************************************************************************
         //Create file io object for file IO
         FileIO gamePlayOutput = new FileIO();
         //ask for a player name
@@ -15,6 +25,10 @@ public class GoFish {
         //add player name to output
         gamePlayOutput.fileOutputDontPrint(playerName);
         Player player = new Player(playerName);
+
+        // ***********************************************************************************************
+        // user interactions created by Luke Potasiewicz, slight addition by Liam O’Toole, Saraf Ray, and Jae Regan.
+        // ***********************************************************************************************
 
         String[] diffOptions = {
                 "Easy - The computer will randomly guess for cards from your hand.",
@@ -56,6 +70,11 @@ public class GoFish {
 
         boolean playerTurn = true;
 
+        // ***********************************************************************************************
+        // Main game loop created by Luke Potasiewicz,
+        // slightly modifyed (for file io) by Liam O’Toole,
+        // and bug fixes by Saraf Ray and Liam O’Toole
+        // ***********************************************************************************************
 
         gamePlayOutput.fileOutput("GO FISH has started!");
         do {
@@ -177,6 +196,10 @@ public class GoFish {
             }
         } while (player.getHand().size() != 0 && computer.getHand().size() != 0);
 
+        // ***********************************************************************************************
+        // End game dialog created by Liam O’Toole, lightly modified by: Luke Potasiewicz, Saraf Ray, Jay Regan.
+        // ***********************************************************************************************
+
         gamePlayOutput.fileOutput("Game is Over!");
         gamePlayOutput.fileOutput("Your number of sets: " + player.getNumberOfSets());
         gamePlayOutput.fileOutput("Computer's number of sets: " + computer.getNumberOfSets());
@@ -188,6 +211,9 @@ public class GoFish {
         }
     }
 
+    // ***********************************************************************************************
+    // Created by Luke Potasiewicz, lightly modified by: Liam O’Toole
+    // ***********************************************************************************************
     /**
      * turnInfo prints to the file and then console information about the current game state
      * @param gamePlayOutput - used to print to console and gameplay output file
@@ -205,6 +231,9 @@ public class GoFish {
         gamePlayOutput.fileOutput("Deck: " + deck.getDeckSize() + " cards left");
     }
 
+    // ***********************************************************************************************
+    // Created by Luke Potasiewicz
+    // ***********************************************************************************************
     /**
      * askUserNumbered is a wrapper function for askUser, that passes a list of numbers for options
      * @param question - question to ask user
@@ -220,8 +249,10 @@ public class GoFish {
         return askUser(question, options, numbers, file);
     }
 
+    // ***********************************************************************************************
+    // Created by Luke Potasiewicz, lightly modified by: Liam O’Toole
+    // ***********************************************************************************************
     /**
-     *
      * @param question - question to ask user
      * @param options - options for user to choose from
      * @param validResponses - options user can type to respond
@@ -246,7 +277,9 @@ public class GoFish {
         file.fileOutput("Your input was invalid. Please try again:");
         return askUser(question, options, validResponses, file);
     }
-
+    // ***********************************************************************************************
+    // Created by Liam O’Toole, lightly modified by: Luke Potasiewicz
+    // ***********************************************************************************************
     public static void recordGame(FileIO gameRecords) {
         try (FileWriter fw = new FileWriter("gameRecords.txt", true);
              BufferedWriter bw = new BufferedWriter(fw);

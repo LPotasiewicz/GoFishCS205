@@ -1,3 +1,6 @@
+// ***********************************************************************************************
+// Created by Saraf Ray, methods modified/added by: Luke Potasiewicz
+// ***********************************************************************************************
 package com.example.gofish;
 
 import java.util.ArrayList;
@@ -14,6 +17,9 @@ public class Computer {
         percentLies = pctLies;
     }
 
+    // ***********************************************************************************************
+    // makeRandomChoice Created by Luke Potasiewicz
+    // ***********************************************************************************************
     // decides which card should be asked for, randomly
     public Card makeRandomChoice() {
         return hand.get(
@@ -21,6 +27,9 @@ public class Computer {
         );
     }
 
+    // ***********************************************************************************************
+    // makeInformedChoice Created by Luke Potasiewicz
+    // ***********************************************************************************************
     // decides which card should be asked for, using memory of previous guesses from the user and computer,
     // and some simple statistics
     public Card makeInformedChoice() {
@@ -75,6 +84,9 @@ public class Computer {
         return leastCommonCard;
     }
 
+    // ***********************************************************************************************
+    // checkForSet Created by Saraf Ray, modified by: Luke Potasiewicz
+    // ***********************************************************************************************
     // this method should be called each turn
     public void checkForSet(FileIO file) {
         ArrayList<Card> set = new ArrayList<>();
@@ -95,6 +107,9 @@ public class Computer {
         }
     }
 
+    // ***********************************************************************************************
+    // checkForMatches Created by Liam O’Toole, modified by: Luke Potasiewicz and Saraf Ray
+    // ***********************************************************************************************
     // given a card, checks for matches of that cards rank in the hand, and then removes and returns those cards
     // note: this method has the chance to lie, and not return the cards it should have, controlled by percentLies
     public ArrayList<Card> checkForMatches(Card card) {
@@ -113,6 +128,9 @@ public class Computer {
         return cardsToRemove;
     }
 
+    // ***********************************************************************************************
+    // drawCard Created by Jae Regan
+    // ***********************************************************************************************
     // takes a card from the deck, and adds it to your hand
     public Card drawCard(Deck deck) {
         Card cardToDraw = deck.getCardsInDeck().get(0);
@@ -120,7 +138,9 @@ public class Computer {
         addToHand(cardToDraw);
         return cardToDraw;
     }
-
+    // ***********************************************************************************************
+    // drawCard Created by Luke Potasiewicz
+    // ***********************************************************************************************
     // fills the hand with 7 cards
     public void populateHand(Deck deck) {
         int count = 0;
